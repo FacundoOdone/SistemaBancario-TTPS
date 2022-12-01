@@ -1,3 +1,5 @@
 class Schedule < ApplicationRecord
-  belongs_to :branch_office
+
+  has_one :branch_office, index: {unique: true}, foreign_key: true
+  
 end

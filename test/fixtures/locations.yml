@@ -3,9 +3,7 @@
 one:
   name: MyString
   province: MyString
-  branch_office: one
 
 two:
   name: MyString
   province: MyString
-  branch_office: two
