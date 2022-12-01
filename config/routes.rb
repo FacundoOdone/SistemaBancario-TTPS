@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :locations
-  get 'branchoffice/new'
+  get 'branchoffice/new' 
   get 'branchoffice/edit'
   get 'branchoffice/index'
   devise_for :users

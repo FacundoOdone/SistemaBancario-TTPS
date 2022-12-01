@@ -1,29 +1,54 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name),data: {turbo: false}) do |f| %>
-<br>
-<br>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+        <h2>Iniciar Sesion</h2>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name),data: {turbo: false}) do |f| %>
+      </div>
+    <div class="card-body">
+    <form>
+      <div class="input-group form-group">
+		    <div class="input-group-prepend">
+          <span class="material-symbols-outlined">mail</span>
+          <div class="form-group field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+        </div>
+      </div>
+      <div class="input-group form-group">
+		    <div class="input-group-prepend">
+        
+          <span class="material-symbols-outlined">
+key
+</span>
+          <div class="form-group field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="row align-items-center remember">
+      <% if devise_mapping.rememberable? %>
+      <div class="form-group field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+      <% end %>
+    </div>
+  <div class="form-group">
+    <div class="actions">
+      <%= f.submit "Log in" %>
+    </div>
   </div>
-<% end %>
-
+  <% end %>
+</div>
 <%= render "devise/shared/links" %>
+
+    </form>
+  </div>
+</div>
+</div>
+</div>

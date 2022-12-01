@@ -1,5 +1,6 @@
 class BranchofficeController < ApplicationController
-  
+  before_action :authenticate_user!
+  $schedule
   def new
     @branch_offices=BranchOffices.new
   end
@@ -8,11 +9,12 @@ class BranchofficeController < ApplicationController
   end
 
   def index
-    @branch_offices = BranchOffices.all
+    @branch_offices = BranchOffice.all
   end
 
   def create
-    @branch_offices = BranchOffices.new(branch_office_params)
+    params[:schedule] = $schedule
+    @branch_offices = BranchOffice.new(branchoffice_params)
 
   end
 end
