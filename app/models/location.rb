@@ -1,4 +1,3 @@
 class Location < ApplicationRecord
-  belongs_to :branch_office, optional: true
-  has_many :branch_office, optional:true
+  has_many :branch_office, foreign_key: true
 end
