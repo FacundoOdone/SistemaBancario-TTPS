@@ -1,5 +1,5 @@
 class Turn < ApplicationRecord
   belong_to :branch_office, optional: true
 
-  has_one :user, index: {unique: true}, foreign_key: true
+  belong_to :user, optional: true
 end
