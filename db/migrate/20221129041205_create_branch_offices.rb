@@ -3,7 +3,7 @@ class CreateBranchOffices < ActiveRecord::Migration[7.0]
     create_table :branch_offices do |t|
       t.string :name
       t.string :direc
-      t.string :tel
+      t.integer :tel
 
 
       t.timestamps

@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_215228) do
   create_table "branch_offices", force: :cascade do |t|
     t.string "name"
     t.string "direc"
-    t.string "tel"
+    t.integer "tel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "turns_id"
@@ -36,11 +36,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_215228) do
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.string "monday"
-    t.string "tuesday"
-    t.string "wednesday"
-    t.string "thursday"
-    t.string "friday"
+    t.time "open_hour_monday"
+    t.time "close_hour_monday"
+    t.time "open_hour_tuesday"
+    t.time "close_hour_tuesday"
+    t.time "open_hour_wednesday"
+    t.time "close_hour_wednesday"
+    t.time "open_hour_thursday"
+    t.time "close_hour_thursday"
+    t.time "open_hour_friday"
+    t.time "close_hour_friday"
+    t.time "open_hour_saturday"
+    t.time "close_hour_saturday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "branch_offices_id"

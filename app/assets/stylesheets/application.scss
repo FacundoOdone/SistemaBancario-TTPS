@@ -24,11 +24,16 @@ align-content: center;
 }
 
 .card{
-height: 370px;
 margin-top: auto;
 margin-bottom: auto;
-width: 400px;
-background-color: rgba(56, 56, 56, 0.623) !important;
+width: 500px;
+background-color: rgba(22, 22, 22, 0.808) !important;
+color:rgba(255, 255, 255, 0.808)
+
+}
+.color_form{
+  color: black;
+  width :auto
 }
 
 .social_icon span{
