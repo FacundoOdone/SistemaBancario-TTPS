@@ -46,8 +46,8 @@
 </nav>
   <%= yield %>
     <main class="container mx-auto mt-28 px-5 flex">
-    <p class="notice"> <%= notice %> </p>
-    <p class="alert"> <%= alert %> </p>
+    <%if notice %> <p class="notice alert alert-success"> <%= notice %>  <%end%></p>
+    <% if alert %> <p class="alert alert-danger"> <%= alert %>  <%end%></p>
     
     </main>
     

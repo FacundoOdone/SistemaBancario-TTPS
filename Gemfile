@@ -13,6 +13,8 @@ gem "sprockets-rails"
 gem "pg", "~> 1.1"
 
 gem 'bootstrap'
+gem 'bootstrap-sass'
+gem 'sass-rails'
 
 gem "devise"
 

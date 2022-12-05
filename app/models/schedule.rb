@@ -1,5 +1,5 @@
 class Schedule < ApplicationRecord
 
-  belongs_to :branch_office
+  has_one :branch_office, dependent: :destroy, foreign_key: true
   
 end

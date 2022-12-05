@@ -23,7 +23,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_215228) do
     t.bigint "turns_id"
     t.bigint "location_id"
     t.bigint "users_id"
+    t.bigint "schedule_id"
     t.index ["location_id"], name: "index_branch_offices_on_location_id", unique: true
+    t.index ["schedule_id"], name: "index_branch_offices_on_schedule_id", unique: true
     t.index ["turns_id"], name: "index_branch_offices_on_turns_id"
     t.index ["users_id"], name: "index_branch_offices_on_users_id"
   end
@@ -50,8 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_215228) do
     t.time "close_hour_saturday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "branch_offices_id"
-    t.index ["branch_offices_id"], name: "index_schedules_on_branch_offices_id", unique: true
   end
 
   create_table "turns", force: :cascade do |t|
@@ -79,8 +79,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_215228) do
   end
 
   add_foreign_key "branch_offices", "locations"
+  add_foreign_key "branch_offices", "schedules"
   add_foreign_key "branch_offices", "turns", column: "turns_id"
   add_foreign_key "branch_offices", "users", column: "users_id"
-  add_foreign_key "schedules", "branch_offices", column: "branch_offices_id"
   add_foreign_key "turns", "users", column: "users_id"
 end
