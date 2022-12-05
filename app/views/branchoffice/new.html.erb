@@ -7,7 +7,7 @@
 				<%= form.label :Nombre %> <span class=" card color_form"><%= form.text_field :name%></span><br>
 				<%= form.label :Direccion %> <span class="card color_form"><%= form.text_field :direc%></span><br>
 				<%= form.label :Telefono %> <span class="card color_form"><%= form.number_field :tel%></span><br>
-				Localidad: <%= select_tag :location, options_from_collection_for_select(@locations, "id", "name"), {inlude_blanck: true} %>
+				<div class="color_form" > Localidad: <%= select_tag :location, options_from_collection_for_select(@locations, "id", "name"), {inlude_blanck: true} %> </div>
 			</div>
 		</div>
 		<div class="card">
