@@ -1,12 +1,13 @@
 class BranchofficeController < ApplicationController
   #before_action :authenticate_user!
-  $branch_offices_param
   def new
     @locations = Location.all
     @branch_offices=BranchOffice.new
   end
 
   def edit
+    @locations = Location.all
+    @branch_offices = BranchOffice.find(params[:id])
   end
 
   def index
@@ -29,7 +30,6 @@ class BranchofficeController < ApplicationController
       )
       @schedule.save
       @branch_offices = BranchOffice.new(name: params[:name], direc: params[:direc], tel: params[:tel])
-      #@branch_offices = @schedule.build_branch_office(name: params[:name], direc: params[:direc], tel: params[:tel], location: @location)
       @branch_offices.location = @location
       @branch_offices.schedule = @schedule
       if (@branch_offices.save)
