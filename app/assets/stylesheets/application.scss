@@ -17,23 +17,30 @@
  @import url('https://fonts.googleapis.com/css?family=Numans');
 
 
-
 .container{
 height: 100%;
 align-content: center;
 }
 
+
+
 .card{
 margin-top: auto;
 margin-bottom: auto;
 width: 500px;
-background-color: rgba(22, 22, 22, 0.808) !important;
-color:rgba(255, 255, 255, 0.808)
+background-color:DarkGray !important;
+//color:rgba(255, 255, 255, 0.808)
+color:#000;
+border:5px;
+padding:16px;
+}
 
+body{
+  background-color:DarkGray
 }
 .color_form{
   color: black;
-  width :auto
+  width :100%
 }
 
 .social_icon span{
@@ -41,6 +48,7 @@ font-size: 60px;
 margin-left: 10px;
 color: #FFC312;
 }
+
 
 .social_icon span:hover{
 color: white;
@@ -100,4 +108,6 @@ color: white;
 .links a{
 margin-left: 4px;
 }
+
+
 

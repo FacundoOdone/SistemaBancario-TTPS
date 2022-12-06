@@ -1,17 +1,20 @@
-<div>
-	<h1 class="font-bold text-4xl">Nueva Sucursal</h1>
+<div class="w-full card">
+	<h1 class="font-bold text-4xl ">Nueva Sucursal</h1>
 	<div>
-		<div class="card center">
+		<div class="my-5 ">
 			<%= form_with model: @branch_office do |form| %>
-			<div class="card">
+			<div class="block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
 				<%= form.label :Nombre, :required => true %> <span class=" card color_form"><%= form.text_field :name%></span><br>
 				<%= form.label :Direccion, :required => true %> <span class="card color_form"><%= form.text_field :direc%></span><br>
 				<%= form.label :Telefono, :required => true %> <span class="card color_form"><%= form.number_field :tel%></span><br>
-				Localidad: <%= select_tag :location, options_from_collection_for_select(@locations, "id", "name"), {inlude_blanck: true} %>
+				Localidad: <a style="color:black"><%= select_tag :location, options_from_collection_for_select(@locations, "id", "name"), {inlude_blanck: true} %> </a><br>
 			</div>
 		</div>
-		<div class="card">
-			<div class="card">
+	</div>
+</div>
+<div class="w-full card">
+	<div>
+		<div class="block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
 				<h2> Ingrese los horarios de cada dia (Inicio y fin) </h2>
 				<%= form.label :Lunes %> <span class="card color_form"><%= form.time_field :open_hour_monday%> </span>
 				<span class="card color_form"><%= form.time_field :close_hour_monday%> </span>
@@ -29,12 +32,10 @@
 				<span class="card color_form"><%= form.time_field :close_hour_friday%> </span>
 
 				<%= form.label :Sabado %> <span class="card color_form"><%= form.time_field :open_hour_saturday%>
-				</span> <span class="card color_form"><%= form.time_field :close_hour_saturday%> </span>
+				</span> <span class="card color_form"><%= form.time_field :close_hour_saturday%> </span> <br>
 				
-				<button class="btn btn-success"><%= form.submit "Crear Nueva Sucursal"%></button>
 			</div>
-			<button class="btn btn-success"><%= form.submit "Crear Nueva Sucursal"%></button>
+			<button class="btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"><%= form.submit "Crear Nueva Sucursal"%></button>
 			<% end %>
 		</div>
-
-	</div>
+</div>

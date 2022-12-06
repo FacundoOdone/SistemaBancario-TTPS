@@ -1,17 +1,17 @@
-<div id="<%= dom_id location %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
+<div id="<%= dom_id location %>" >
+  <p class="my-5" style="color:white">
+    <strong class="block font-medium mb-1">Nombre:</strong>
     <%= location.name %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Province:</strong>
+  <p class="my-5" style="color:white">
+    <strong class="block font-medium mb-1">Provincia:</strong>
     <%= location.province %>
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this location", location, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this location', edit_location_path(location), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Show this location", location, class: "btn btn-primary rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this location', edit_location_path(location), class: "btn btn-info rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

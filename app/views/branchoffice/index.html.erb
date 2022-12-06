@@ -1,17 +1,29 @@
-<div>
-  <h1 class="font-bold text-4xl">Indice de sucursales</h1>
-  <a href="/branchoffice/new"> <button type="button" class="btn btn-primary">  Nueva Sucursal</button> </a>
-  <% @branch_offices.each do |sucursal| %>
+<div class="w-full card">
+  <div>
+    <h1 class="font-bold text-4xl">Indice de sucursales</h1>
+    <a href="/branchoffice/new"> <button type="button"
+        class="btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"> Nueva Sucursal</button>
+    </a>
+    <% @branch_offices.each do |sucursal| %>
     <div class="row">
-      <div class="card">
-        <div class= "card-title" >
-         <p> <b style="color:#FF7F63"> Sucursal: </b> <a style="color:white" ><%= sucursal.name %> </p> </a>
+      <div class="card ">
+        <div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+          style="background-color:Lavender">
+          <div class="card-title ">
+            <p> <b style="color:#FF7F63"> Sucursal: </b><%= sucursal.name %> </p> </a>
+          </div>
+          <div class="card-body">
+            <p> <b> Telefono: </b><%= sucursal.tel %> </p>
+            <p> <b> Direccion: </b><%= sucursal.direc %> </p>
+            <p> <b> Localidad: </b><%= sucursal.location.name %> </p>
+            <p> <b> Provincia: </b><%= sucursal.location.province %> </p>
+            <a href="/branchoffice/edit/<%= sucursal.id%>"> <button
+                class="btn btn-info rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"> Editar </a>
+            </button>
+          </div>
         </div>
-        <div class="card-body" style="color:white">
-         <p> <b> Telefono: </b><%= sucursal.tel %> </p>
-         <p> <b> Direccion: </b><%= sucursal.direc %> </p>
-         <p> <b> Localidad: </b><%= sucursal.location.name %> </p>
-         <p> <b> Provincia: </b><%= sucursal.location.province %> </p>
-          <a href="/branchoffice/edit/<%= sucursal.id%>"><button class ="btn btn-success"> Editar  </a> </button>
-  <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>

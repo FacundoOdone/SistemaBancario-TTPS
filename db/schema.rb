@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_215228) do
     t.bigint "location_id"
     t.bigint "users_id"
     t.bigint "schedule_id"
-    t.index ["location_id"], name: "index_branch_offices_on_location_id", unique: true
+    t.index ["location_id"], name: "index_branch_offices_on_location_id"
     t.index ["schedule_id"], name: "index_branch_offices_on_schedule_id", unique: true
     t.index ["turns_id"], name: "index_branch_offices_on_turns_id"
     t.index ["users_id"], name: "index_branch_offices_on_users_id"

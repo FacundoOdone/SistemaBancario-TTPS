@@ -1,4 +1,21 @@
-<div>
-  <h1 class="font-bold text-4xl">Users#index</h1>
-  <p>Find me in app/views/users/index.html.erb</p>
-</div>
+<div class="w-full card">
+  <div class ="card-title">
+
+    <div class="flex justify-between items-center">
+      <h1 class=" font-bold text-4xl">Usuarios</h1>
+    </div>
+    <a href="/users/new"> <button class="btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"> Agregar Usuarios </button> </a> 
+  </div>
+  <div class="card-body">
+    <div id="locations" >
+      <% @users.each do |user| %>
+			  <div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
+				 <p> <b>Usuario n°:</b> <%= user.id%> <br> </p>
+         <p> <b> Email: </b><%= user.email%><br> </p>
+         <p> <b> Rol: </b><%= user.rol%> <br> </p>
+         <a href="/users/edit/<%= user.id%>"> <button class ="btn btn-info rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"> Editar  </a> </button>
+        </div> 
+      <%end%>
+  </div>
+</div></div> </div></div>
+

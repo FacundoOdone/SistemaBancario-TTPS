@@ -1,17 +1,15 @@
 <div>
 	<h1 class="font-bold text-4xl">Nuevo Usuario</h1>
 	<div>
-		<div class="card center">
 			<%= form_with model: @user do |form| %>
-			  <div class="card">
-				  <%= form.label :Email %> <span class="color_form"><%= form.email_field :email%></span><br>
-				  <%= form.label :Password %> <span class="color_form"><%= form.password_field :encrypted_password%></span><br>
-				  Rol: <%= form.select :rol, ["ADMIN", "OPERATOR", "CLIENT"] %>
-        <div class="card-footer">
-          <button class="btn btn-success"><%= form.submit "Crear Nuevo Usuario"%></button>
-        </div>
-        </div>
+				<div class="card">
+			  	<div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
+				  	<%= form.label :Email %> <span class=" card color_form"><%= form.email_field :email, class: 'color_form'%></span><br>
+				  	<%= form.label :Password %> <span class="card color_form"><%= form.password_field :encrypted_password, class: 'color_form'%></span><br>
+				  	Rol:<p class="card color_form"> <%= form.select :rol, ["ADMIN", "OPERATOR", "CLIENT"] %> </p> <br>
+          	<button class="btn btn-success"><%= form.submit "Crear Nuevo Usuario"%></button>
+        	</div>
+				</div>
       <%end%>
-		</div>
   </div>
 </div>

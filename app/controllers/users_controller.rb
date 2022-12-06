@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   def index
+    @users= User.all
   end
 
   def edit
+    @user=User.find(params[:id])
   end
 
   def new
@@ -10,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @users = User.new(email: params[:email], encrypted_password: params[:encrypted_password], rol: params[:rol])
+    @users = User.new(email: params[:email], password: params[:encrypted_password], rol: params[:rol])
     if(@users.save)
       redirect_to users_index_path, notice: "Usuario Creado Correctamente"
     else

@@ -1,4 +1,19 @@
-<div>
-  <h1 class="font-bold text-4xl">Users#edit</h1>
-  <p>Find me in app/views/users/edit.html.erb</p>
+<div class="w-full card">
+	<h1 class="font-bold text-4xl">Editar Usuario</h1>
+	<div>
+		<%= form_with model: @users do |form| %>
+		<div class="card">
+			<div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+				style="background-color:Lavender">
+				<%= form.label :Email %> <span
+					class="card color_form"><%= form.email_field :email, class: "color_form", placeholder: @user.email, value: @user.email%></span><br>
+				<%= form.label :Password %> <span
+					class="card color_form"><%= form.password_field :encrypted_password, class: "color_form"%></span><br>
+				Rol:<p class="card color_form"> <%= form.select :rol, ["ADMIN", "OPERATOR", "CLIENT"], {:prompt => @user.rol} %>
+				</p> <br>
+				<button class="btn btn-success"><%= form.submit "Editar Usuario"%></button>
+			</div>
+		</div>
+		<%end%>
+	</div>
 </div>
