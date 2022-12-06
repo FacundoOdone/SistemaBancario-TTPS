@@ -1,0 +1,17 @@
+<div>
+	<h1 class="font-bold text-4xl">Nuevo Usuario</h1>
+	<div>
+		<div class="card center">
+			<%= form_with model: @user do |form| %>
+			  <div class="card">
+				  <%= form.label :Email %> <span class="color_form"><%= form.email_field :email%></span><br>
+				  <%= form.label :Password %> <span class="color_form"><%= form.password_field :encrypted_password%></span><br>
+				  Rol: <%= form.select :rol, ["ADMIN", "OPERATOR", "CLIENT"] %>
+        <div class="card-footer">
+          <button class="btn btn-success"><%= form.submit "Crear Nuevo Usuario"%></button>
+        </div>
+        </div>
+      <%end%>
+		</div>
+  </div>
+</div>

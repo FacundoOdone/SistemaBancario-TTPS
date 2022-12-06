@@ -4,10 +4,10 @@
 		<div class="card center">
 			<%= form_with model: @branch_office do |form| %>
 			<div class="card">
-				<%= form.label :Nombre %> <span class=" card color_form"><%= form.text_field :name%></span><br>
-				<%= form.label :Direccion %> <span class="card color_form"><%= form.text_field :direc%></span><br>
-				<%= form.label :Telefono %> <span class="card color_form"><%= form.number_field :tel%></span><br>
-				<div class="color_form" > Localidad: <%= select_tag :location, options_from_collection_for_select(@locations, "id", "name"), {inlude_blanck: true} %> </div>
+				<%= form.label :Nombre, :required => true %> <span class=" card color_form"><%= form.text_field :name%></span><br>
+				<%= form.label :Direccion, :required => true %> <span class="card color_form"><%= form.text_field :direc%></span><br>
+				<%= form.label :Telefono, :required => true %> <span class="card color_form"><%= form.number_field :tel%></span><br>
+				Localidad: <%= select_tag :location, options_from_collection_for_select(@locations, "id", "name"), {inlude_blanck: true} %>
 			</div>
 		</div>
 		<div class="card">

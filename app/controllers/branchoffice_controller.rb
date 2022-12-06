@@ -1,12 +1,22 @@
 class BranchofficeController < ApplicationController
   #before_action :authenticate_user!
-  $branch_offices_param
   def new
     @locations = Location.all
     @branch_offices=BranchOffice.new
   end
 
   def edit
+    @locations = Location.all
+    @branch_offices = BranchOffice.find(params[:id])
+  end
+  
+  def update
+    @branch_offices = BranchOffice.find(params[:id])
+    if @branch_offices.update(name: params[:name], direc: params[:direc], tel: params[:tel], location: params[:locations])
+      redirect_to branchoffice_index_path, notice: "Se actualizo correctamente la sucursal"
+    else
+      redirect_to branchoffice_index_path, alert: "Ocurrio un error al actualizar"
+    end
   end
 
   def index
@@ -29,7 +39,6 @@ class BranchofficeController < ApplicationController
       )
       @schedule.save
       @branch_offices = BranchOffice.new(name: params[:name], direc: params[:direc], tel: params[:tel])
-      #@branch_offices = @schedule.build_branch_office(name: params[:name], direc: params[:direc], tel: params[:tel], location: @location)
       @branch_offices.location = @location
       @branch_offices.schedule = @schedule
       if (@branch_offices.save)
@@ -46,3 +55,4 @@ class BranchofficeController < ApplicationController
   end
 
 end
+
