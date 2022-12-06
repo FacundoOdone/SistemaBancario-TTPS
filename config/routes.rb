@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'branchoffice/new', to: "branchoffice#new"
   post 'branchoffice/new', to: "branchoffice#create"
   get 'branchoffice/edit/:id', to: "branchoffice#edit"
+  post 'branchoffice/edit/:id', to: "branchoffice#update"
   get 'branchoffice/index'
   get 'locations/new'
   devise_for :users

@@ -9,6 +9,15 @@ class BranchofficeController < ApplicationController
     @locations = Location.all
     @branch_offices = BranchOffice.find(params[:id])
   end
+  
+  def update
+    @branch_offices = BranchOffice.find(params[:id])
+    if @branch_offices.update(name: params[:name], direc: params[:direc], tel: params[:tel], location: params[:locations])
+      redirect_to branchoffice_index_path, notice: "Se actualizo correctamente la sucursal"
+    else
+      redirect_to branchoffice_index_path, alert: "Ocurrio un error al actualizar"
+    end
+  end
 
   def index
     @branch_offices = BranchOffice.all
@@ -46,3 +55,4 @@ class BranchofficeController < ApplicationController
   end
 
 end
+
