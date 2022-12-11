@@ -1,15 +1,22 @@
 <div class="w-full card">
   <div class ="card-title">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
 
     <div class="flex justify-between items-center">
       <h1 class=" font-bold text-4xl">Localidades</h1>
     </div>
-    <%= link_to 'New location', new_location_path, class: "btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <a href="/users/new"> <button class="btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"> Agregar Localidad </button> </a> 
   </div>
-    <div id="locations">
-      <%= render @locations %>
+  <div class="card-body">
+    <div>
+      <% @locations.each do |location| %>
+			  <div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
+				 <p> <b>Nombre:</b> <%= location.name%> <br> </p>
+         <p> <b> Provincia: </b><%= location.province%><br> </p>
+         <p>
+         <%= link_to 'Edit this location', edit_location_path(location), class: "btn btn-info mt-2 rounded-lg py-3 px-3 bg-gray-100 font-medium" %>
+         <%= link_to 'Destroy this location', location_path(location), method: :delete, class: "btn btn-danger mt-2 rounded-lg py-3 px-3 bg-gray-100 font-medium" %>
+          </p>
+        </div> 
+      <%end%>
   </div>
-</div>
+</div></div> </div></div>

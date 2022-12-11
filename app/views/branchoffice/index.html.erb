@@ -17,9 +17,19 @@
             <p> <b> Direccion: </b><%= sucursal.direc %> </p>
             <p> <b> Localidad: </b><%= sucursal.location.name %> </p>
             <p> <b> Provincia: </b><%= sucursal.location.province %> </p>
-            <a href="/branchoffice/edit/<%= sucursal.id%>"> <button
+             <p><a href="/branchoffice/edit/<%= sucursal.id%>"> <button
                 class="btn btn-info rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"> Editar </a>
+            </button> 
+            <a href="/schedule/edit/<%= sucursal.schedule.id%>"> <button
+                class="btn btn-warning rounded-lg py-3 ml-2 px-4 bg-gray-100 inline-block font-medium"> Editar Horario</a>
+            </button> </p>
+            <p><a href="/schedule/show/<%= sucursal.schedule.id%>"> <button
+                class="btn btn-secondary rounded-lg py-3 ml-2 px-4 bg-gray-100 inline-block font-medium"> Ver Horario </a>
             </button>
+            <a href="/branchoffice/destroy/<%= sucursal.id%>"> <button
+                class="btn btn-danger rounded-lg py-3 ml-2 px-4 bg-gray-100 inline-block font-medium"> Borrar Sucursal </a>
+            </button></p>
+            
           </div>
         </div>
       </div>

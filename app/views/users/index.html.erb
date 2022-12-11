@@ -1,21 +1,27 @@
 <div class="w-full card">
-  <div class ="card-title">
+  <div class="card-title">
 
     <div class="flex justify-between items-center">
       <h1 class=" font-bold text-4xl">Usuarios</h1>
     </div>
-    <a href="/users/new"> <button class="btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"> Agregar Usuarios </button> </a> 
+    <a href="/users/new"> <button class="btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium">
+        Agregar Usuarios </button> </a>
   </div>
   <div class="card-body">
-    <div id="locations" >
+    <div>
       <% @users.each do |user| %>
-			  <div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
-				 <p> <b>Usuario n°:</b> <%= user.id%> <br> </p>
-         <p> <b> Email: </b><%= user.email%><br> </p>
-         <p> <b> Rol: </b><%= user.rol%> <br> </p>
-         <a href="/users/edit/<%= user.id%>"> <button class ="btn btn-info rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"> Editar  </a> </button>
-        </div> 
+      <div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+        style="background-color:Lavender">
+        <p> <b>Usuario n°:</b> <%= user.id%> <br> </p>
+        <p> <b> Email: </b><%= user.email%><br> </p>
+        <p> <b> Rol: </b><%= user.rol%> <br> </p>
+        <a href="/users/edit/<%= user.id%>"> <button
+            class="btn btn-info rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"> Editar </a> </button>
+        <a href="/users/destroy/<%= user.id%>"> <button
+            class="btn btn-danger rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"> Eliminar </a>
+        </button>
+      </div>
       <%end%>
+    </div>
   </div>
-</div></div> </div></div>
-
+</div>

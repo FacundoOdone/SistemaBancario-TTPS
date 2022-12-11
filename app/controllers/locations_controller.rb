@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action  :set_location, only: %i[ show edit update destroy ] 
 
   # GET /locations or /locations.json
@@ -22,30 +22,43 @@ class LocationsController < ApplicationController
 
   # POST /locations or /locations.json
   def create
-    @location = Location.new(location_params)
-
-    respond_to do |format|
-      if @location.save
-        format.html { redirect_to location_url(@location), notice: "Location was successfully created." }
-        format.json { render :show, status: :created, location: @location }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
+    @location=Location.all
+    @var = @location.where(name: location_params["name"], province: location_params["province"])
+    if (@var.size == 0)
+      @location = Location.new(location_params)
+      respond_to do |format|
+        if @location.save
+          format.html { redirect_to location_url(@location), notice: "Localidad creada con exito." }
+          format.json { render :show, status: :created, location: @location }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @location.errors, status: :unprocessable_entity }
+        end
       end
+    else 
+      redirect_to location_url(@location), alert: "Ocurrio un error al crear la localidad"
     end
   end
 
   # PATCH/PUT /locations/1 or /locations/1.json
   def update
-    respond_to do |format|
-      if @location.update(location_params)
-        format.html { redirect_to location_url(@location), notice: "Location was successfully updated." }
-        format.json { render :show, status: :ok, location: @location }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
+    @locations=Location.all
+    @var = @locations.where(name: location_params["name"], province: location_params["province"])
+    if (@var.size == 0)
+      respond_to do |format|
+        if @location.update(location_params)
+          flash[:notice] = "Localidad actualizada con exito"
+          redirect_to "/locations/index" and return
+        else
+          flash[:alert] = "Ocurrio un error al actualizar la localidad"
+          redirect_to "/locations/index" and return
+        end
       end
+    else
+      flash[:alert] = "Esa localidad ya existe en la provincia"
+      redirect_to "/locations/index" and return
     end
+    
   end
 
   # DELETE /locations/1 or /locations/1.json
@@ -53,7 +66,7 @@ class LocationsController < ApplicationController
     @location.destroy
 
     respond_to do |format|
-      format.html { redirect_to locations_url, notice: "Location was successfully destroyed." }
+      format.html { redirect_to locations_url, notice: "Se borro la localidad." }
       format.json { head :no_content }
     end
   end

@@ -9,9 +9,9 @@
 					class="card color_form"><%= form.email_field :email, class: "color_form", placeholder: @user.email, value: @user.email%></span><br>
 				<%= form.label :Password %> <span
 					class="card color_form"><%= form.password_field :encrypted_password, class: "color_form"%></span><br>
-				Rol:<p class="card color_form"> <%= form.select :rol, ["ADMIN", "OPERATOR", "CLIENT"], {:prompt => @user.rol} %>
+				Rol:<p class="card color_form"> <%= form.select :rol, ["ADMIN", "OPERATOR", "CLIENT"], {:prompt => @user.rol, selected: @user.rol} %>
 				</p> <br>
-				<button class="btn btn-success"><%= form.submit "Editar Usuario"%></button>
+				<p><button class="btn btn-success rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"><%= form.submit "Editar Usuario"%></button>
 			</div>
 		</div>
 		<%end%>

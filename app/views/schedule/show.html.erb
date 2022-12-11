@@ -1,0 +1,39 @@
+<div class="w-full card">
+  <div class="card-title">
+    <div class="flex justify-between items-center">
+      <h1 class=" font-bold text-4xl">Horario de la sucursal</h1>
+    </div>
+  </div>
+  <div class="card-body">
+    <div>
+      <div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+        style="background-color:Lavender">
+        <p> <b>Lunes:</b><br> 
+          <b> Apertura:</b> <%= @schedule.open_hour_monday%> <br> 
+          <b> Cierre:</b> <%=  @schedule.close_hour_monday%> </p>
+        <br>
+        <p> <b>Martes:</b><br> 
+          <b> Apertura:</b> <%= @schedule.open_hour_tuesday%> <br> 
+          <b> Cierre:</b> <%=  @schedule.close_hour_tuesday%> </p>
+        <br>
+        <p> <b>Miercoles:</b><br> 
+          <b> Apertura:</b> <%= @schedule.open_hour_wednesday%> <br> 
+          <b> Cierre:</b> <%=  @schedule.close_hour_wednesday%> </p>
+        <br>
+        <p> <b>Jueves:</b><br> 
+          <b> Apertura:</b> <%= @schedule.open_hour_thursday%> <br> 
+          <b> Cierre:</b> <%=  @schedule.close_hour_thursday%> </p>
+        <br>
+        <p> <b>Viernes:</b><br> 
+          <b> Apertura:</b> <%= @schedule.open_hour_friday%> <br> 
+          <b> Cierre:</b> <%=  @schedule.close_hour_friday%> </p>
+        <br>
+        <p> <b>Sabado:</b><br> 
+          <b> Apertura:</b> <%= @schedule.open_hour_saturday%> <br> 
+          <b> Cierre:</b> <%=  @schedule.close_hour_saturday%> </p>
+        <br>
+      </div>
+    </div>
+    <a href="/branchoffice/index"> <button class="btn btn-warning rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"> Volver </button>
+  </div>
+</div>
