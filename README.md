@@ -26,3 +26,5 @@ El comando db:seed iniciara La sucursal de prueba, su horario de prueba y 3 usua
 °Admin- email:"admin@admin.com" contraseña: "adminadmin"
 °Operador- email:"operador@operador.com" contraseña: "operadoroperador"
 °Cliente- email: "cliente@cliente.com" contraseña:"clientecliente"
+
+Debido a un problema con git, la rama principal donde todo fue desarrollado es "master"
