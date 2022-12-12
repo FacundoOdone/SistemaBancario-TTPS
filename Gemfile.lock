@@ -83,6 +83,7 @@ GEM
       sassc (>= 2.0.0)
     builder (3.2.4)
     cancan (1.6.10)
+    cancancan (3.4.0)
     capybara (3.38.0)
       addressable
       matrix
@@ -251,6 +252,7 @@ DEPENDENCIES
   bootstrap
   bootstrap-sass
   cancan (~> 1.6)
+  cancancan (~> 3.4)
   capybara
   debug
   devise

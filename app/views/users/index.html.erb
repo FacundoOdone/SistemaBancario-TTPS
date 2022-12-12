@@ -15,11 +15,14 @@
         <p> <b>Usuario n°:</b> <%= user.id%> <br> </p>
         <p> <b> Email: </b><%= user.email%><br> </p>
         <p> <b> Rol: </b><%= user.rol%> <br> </p>
+        <% if can? :update, @users %>
         <a href="/users/edit/<%= user.id%>"> <button
             class="btn btn-info rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"> Editar </a> </button>
+        <% end%>
         <a href="/users/destroy/<%= user.id%>"> <button
             class="btn btn-danger rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"> Eliminar </a>
         </button>
+        
       </div>
       <%end%>
     </div>
