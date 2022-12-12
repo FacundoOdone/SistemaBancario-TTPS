@@ -4,6 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  has_one :branch_office, foreign_key: true
+  
+  belongs_to :branch_office,optional: true
   has_many :turn, foreign_key: true
+
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+  validates :rol, presence: true
 end

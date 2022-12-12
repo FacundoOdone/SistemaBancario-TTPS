@@ -9,5 +9,6 @@ class BranchOffice < ApplicationRecord
   validates :direc, presence: true
   validates :tel, presence: true
   validates :location_id, presence: true
+  validates :schedule_id, presence: true
   #Si es has_one, al index pongo index: {unique: true}
 end
