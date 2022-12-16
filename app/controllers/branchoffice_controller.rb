@@ -80,7 +80,7 @@ class BranchofficeController < ApplicationController
   def destroy
     @branch_office = BranchOffice.find(params[:id])
     @schedule = @branch_office.schedule
-    if (@schedule.destroy)
+    #if (@schedule.destroy)
       if (@branch_office.destroy)
         flash[:notice] = "Se elimino la sucursal Correctamente"
         redirect_to branchoffice_index_path and return
@@ -88,10 +88,10 @@ class BranchofficeController < ApplicationController
         flash[:alert] = "Ocurrio un error al intentar destruir la sucursal"
         redirect_to branchoffice_index_path and return
       end
-    else
-      flash[:alert] = "Ocurrio un error al intentar destruir la sucursal"
-      redirect_to branchoffice_index_path and return
-    end
+    #else
+     # flash[:alert] = "Ocurrio un error al intentar destruir la sucursal"
+      #redirect_to branchoffice_index_path and return
+    #end
     
   end
 

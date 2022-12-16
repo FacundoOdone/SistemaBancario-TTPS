@@ -1,7 +1,7 @@
 <div>
 	<h1 class="font-bold text-4xl">Nuevo Usuario</h1>
 	<div>
-			<%= form_with model: @user do |form| %>
+			<%= form_with model: @users , url: "/users/new" do |form| %>
 				<div class="card">
 			  	<div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
 				  	<%= form.label :Email %> <span class=" card color_form"><%= form.email_field :email, class: 'color_form'%></span><br>

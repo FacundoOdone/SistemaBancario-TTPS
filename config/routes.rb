@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'users/index'
-  get 'users/edit/:id', to: "users#edit"
+  get 'users/edit/:id', to: "users#edit", as: :edit_user
   post 'users/edit/:id', to: "users#update"
   get 'users/new'
   post 'users/new' , to: "users#create"
