@@ -30,7 +30,11 @@ BranchOffice.create!({
     close_hour_friday:"21:00:00",
 
     open_hour_saturday:"08:00:00",
-    close_hour_saturday:"21:00:00"
+    close_hour_saturday:"21:00:00",
+
+    open_hour_sunday:"08:00:00",
+    close_hour_sunday:"21:00:00"
+
   })
 })
 

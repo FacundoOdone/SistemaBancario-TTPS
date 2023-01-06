@@ -15,7 +15,7 @@
           Localidad:<p class="card color_form">
             <%= select_tag :location, options_from_collection_for_select(@locations, "id", "name"), {inlude_blanck: true} %>
           </p> <br>
-          <button class="btn btn-success"><%= form.submit "Editar Sucursal"%></button>
+          <%= form.submit "Editar Sucursal", class:"btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"%></button>
         </div>
       </div>
       <% end%>

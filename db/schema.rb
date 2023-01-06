@@ -46,6 +46,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_215228) do
     t.time "close_hour_friday"
     t.time "open_hour_saturday"
     t.time "close_hour_saturday"
+    t.time "open_hour_sunday"
+    t.time "close_hour_sunday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

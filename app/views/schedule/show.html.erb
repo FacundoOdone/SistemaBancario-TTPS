@@ -32,8 +32,12 @@
           <b> Apertura:</b> <%= @schedule.open_hour_saturday%> <br> 
           <b> Cierre:</b> <%=  @schedule.close_hour_saturday%> </p>
         <br>
+        <p> <b>Domingo:</b><br> 
+          <b> Apertura:</b> <%= @schedule.open_hour_sunday%> <br> 
+          <b> Cierre:</b> <%=  @schedule.close_hour_sunday%> </p>
+        <br>
       </div>
     </div>
-    <a href="/branchoffice/index"> <button class="btn btn-warning rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"> Volver </button>
+    <%= link_to "Volver", index_branchoffice_path(), class:"btn btn-warning rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"%>
   </div>
 </div>

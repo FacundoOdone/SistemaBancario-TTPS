@@ -20,7 +20,8 @@ class CreateSchedules < ActiveRecord::Migration[7.0]
       t.time :open_hour_saturday
       t.time :close_hour_saturday
 
-      
+      t.time :open_hour_sunday
+      t.time :close_hour_sunday
 
       t.timestamps
     end

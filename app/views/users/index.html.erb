@@ -4,8 +4,7 @@
     <div class="flex justify-between items-center">
       <h1 class=" font-bold text-4xl">Usuarios</h1>
     </div>
-    <a href="/users/new"> <button class="btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium">
-        Agregar Usuarios </button> </a>
+      <%=link_to "Agregar Usuarios", new_user_path(), class: "btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"%>
   </div>
   <div class="card-body">
     <div>
@@ -18,10 +17,7 @@
         <% if can? :update, @users %>
         <%= link_to 'Editar Usuario', edit_user_path(user), class: "btn btn-info rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
         <% end%>
-        <a href="/users/destroy/<%= user.id%>"> <button
-            class="btn btn-danger rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"> Eliminar </a>
-        </button>
-        
+        <%= link_to "Eliminar Usuario", destroy_user_path(user), class:"btn btn-danger rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
       </div>
       <%end%>
     </div>

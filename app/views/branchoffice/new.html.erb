@@ -33,9 +33,12 @@
 
 				<%= form.label :Sabado %> <span class="card color_form"><%= form.time_field :open_hour_saturday%>
 				</span> <span class="card color_form"><%= form.time_field :close_hour_saturday%> </span> <br>
+
+				<%= form.label :Domingo %> <span class="card color_form"><%= form.time_field :open_hour_sunday%>
+				</span> <span class="card color_form"><%= form.time_field :close_hour_sunday%> </span> <br>
 				
 			</div>
-			<button class="btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"><%= form.submit "Crear Nueva Sucursal"%></button>
+			<%= form.submit "Crear Nueva Sucursal", class:"btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"%></button>
 			<% end %>
 		</div>
 </div>

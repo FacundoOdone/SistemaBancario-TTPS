@@ -4,23 +4,27 @@
 		<div class="block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
 				<h2> Ingrese los horarios de cada dia (Inicio y fin) </h2>
 				<%= form.label :Lunes %> <span class="card color_form"><%= form.time_field :open_hour_monday, placeholder: @schedule.open_hour_monday, value: @schedule.open_hour_monday%> </span>
-				<span class="card color_form"><%= form.time_field :close_hour_monday, placeholder: @schedule.close_hour_monday, value: @schedule.close_hour_monday%> </span>
+				<span class="card color_form"><%= form.time_field :close_hour_monday, placeholder: @schedule.close_hour_monday, value: @schedule.close_hour_monday%> </span><br>
 
 				<%= form.label :Martes %> <span class="card color_form"><%= form.time_field :open_hour_tuesday, placeholder: @schedule.open_hour_tuesday, value: @schedule.open_hour_tuesday%> </span>
-				<span class="card color_form"><%= form.time_field :close_hour_tuesday, placeholder: @schedule.close_hour_tuesday, value: @schedule.close_hour_tuesday%> </span>
+				<span class="card color_form"><%= form.time_field :close_hour_tuesday, placeholder: @schedule.close_hour_tuesday, value: @schedule.close_hour_tuesday%> </span><br>
 
 				<%= form.label :Miercoles %> <span class="card color_form"><%= form.time_field :open_hour_wednesday, placeholder: @schedule.open_hour_wednesday, value: @schedule.open_hour_wednesday%>
-				</span> <span class="card color_form"><%= form.time_field :close_hour_wednesday, placeholder: @schedule.close_hour_wednesday, value: @schedule.close_hour_wednesday%> </span>
+				</span> <span class="card color_form"><%= form.time_field :close_hour_wednesday, placeholder: @schedule.close_hour_wednesday, value: @schedule.close_hour_wednesday%> </span><br>
 
 				<%= form.label :Jueves %> <span class="card color_form"><%= form.time_field :open_hour_thursday, placeholder: @schedule.open_hour_thursday, value: @schedule.open_hour_thursday%>
-				</span> <span class="card color_form"><%= form.time_field :close_hour_thursday, placeholder: @schedule.close_hour_thursday, value: @schedule.close_hour_thursday%> </span>
+				</span> <span class="card color_form"><%= form.time_field :close_hour_thursday, placeholder: @schedule.close_hour_thursday, value: @schedule.close_hour_thursday%> </span><br>
 
 				<%= form.label :Viernes %> <span class="card color_form"><%= form.time_field :open_hour_friday, placeholder: @schedule.open_hour_friday, value: @schedule.open_hour_friday%> </span>
-				<span class="card color_form"><%= form.time_field :close_hour_friday, placeholder: @schedule.close_hour_friday, value: @schedule.close_hour_friday%> </span>
+				<span class="card color_form"><%= form.time_field :close_hour_friday, placeholder: @schedule.close_hour_friday, value: @schedule.close_hour_friday%> </span><br>
 
 				<%= form.label :Sabado %> <span class="card color_form"><%= form.time_field :open_hour_saturday, placeholder: @schedule.open_hour_saturday, value: @schedule.open_hour_saturday%>
 				</span> <span class="card color_form"><%= form.time_field :close_hour_saturday, placeholder: @schedule.close_hour_saturday, value: @schedule.close_hour_saturday%> </span> <br>
-				<button class="btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"><%= form.submit "Cambiar Horario"%></button>
+				
+				<%= form.label :Domingo %> <span class="card color_form"><%= form.time_field :open_hour_sunday, placeholder: @schedule.open_hour_sunday, value: @schedule.open_hour_sunday%>
+				</span> <span class="card color_form"><%= form.time_field :close_hour_sunday, placeholder: @schedule.close_hour_sunday, value: @schedule.close_hour_sunday%> </span> <br>
+
+				<%= form.submit "Cambiar Horario", class:"btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"%></button>
 			</div>
 			<% end %>
 		</div>

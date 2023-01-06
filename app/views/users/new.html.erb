@@ -7,7 +7,7 @@
 				  	<%= form.label :Email %> <span class=" card color_form"><%= form.email_field :email, class: 'color_form'%></span><br>
 				  	<%= form.label :Password %> <span class="card color_form"><%= form.password_field :encrypted_password, class: 'color_form'%></span><br>
 				  	Rol:<p class="card color_form"> <%= form.select :rol, ["ADMIN", "OPERATOR", "CLIENT"] %> </p> <br>
-          	<button class="btn btn-success"><%= form.submit "Crear Nuevo Usuario"%></button>
+          	<%= form.submit "Crear Nuevo Usuario", class:"btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"%></button>
         	</div>
 				</div>
       <%end%>
