@@ -4,10 +4,12 @@
 		<div class="my-5 ">
 			<%= form_with model: @branch_office do |form| %>
 			<div class="block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
-				<%= form.label :Nombre, :required => true %> <span class=" card color_form"><%= form.text_field :name%></span><br>
-				<%= form.label :Direccion, :required => true %> <span class="card color_form"><%= form.text_field :direc%></span><br>
-				<%= form.label :Telefono, :required => true %> <span class="card color_form"><%= form.number_field :tel%></span><br>
+			<%= form.fields_for :branch_office do |branch_office| %>
+				<%= branch_office.label :Nombre, :required => true %> <span class=" card color_form"><%= branch_office.text_field :name%></span><br>
+				<%= branch_office.label :Direccion, :required => true %> <span class="card color_form"><%= branch_office.text_field :direc%></span><br>
+				<%= branch_office.label :Telefono, :required => true %> <span class="card color_form"><%= branch_office.number_field :tel%></span><br>
 				Localidad: <a style="color:black"><%= select_tag :location, options_from_collection_for_select(@locations, "id", "name"), {inlude_blanck: true} %> </a><br>
+			<% end %>
 			</div>
 		</div>
 	</div>
@@ -15,30 +17,34 @@
 <div class="w-full card">
 	<div>
 		<div class="block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
+			<%= form.fields_for :schedule do |schedule| %>
 				<h2> Ingrese los horarios de cada dia (Inicio y fin) </h2>
-				<%= form.label :Lunes %> <span class="card color_form"><%= form.time_field :open_hour_monday%> </span>
-				<span class="card color_form"><%= form.time_field :close_hour_monday%> </span>
+				<%= schedule.label :Lunes %> <span class="card color_form"><%= schedule.time_field :open_hour_monday %> </span>
+				<span class="card color_form"><%= schedule.time_field :close_hour_monday %> </span>
 
-				<%= form.label :Martes %> <span class="card color_form"><%= form.time_field :open_hour_tuesday%> </span>
-				<span class="card color_form"><%= form.time_field :close_hour_tuesday%> </span>
+				<%= schedule.label :Martes %> <span class="card color_form"><%= schedule.time_field :open_hour_tuesday %> </span>
+				<span class="card color_form"><%= schedule.time_field :close_hour_tuesday %> </span>
 
-				<%= form.label :Miercoles %> <span class="card color_form"><%= form.time_field :open_hour_wednesday%>
-				</span> <span class="card color_form"><%= form.time_field :close_hour_wednesday%> </span>
+				<%= schedule.label :Miercoles %> <span class="card color_form"><%= schedule.time_field :open_hour_wednesday %>
+				</span> <span class="card color_form"><%= schedule.time_field :close_hour_wednesday %> </span>
 
-				<%= form.label :Jueves %> <span class="card color_form"><%= form.time_field :open_hour_thursday%>
-				</span> <span class="card color_form"><%= form.time_field :close_hour_thursday%> </span>
+				<%= schedule.label :Jueves %> <span class="card color_form"><%= schedule.time_field :open_hour_thursday %>
+				</span> <span class="card color_form"><%= schedule.time_field :close_hour_thursday %> </span>
 
-				<%= form.label :Viernes %> <span class="card color_form"><%= form.time_field :open_hour_friday%> </span>
-				<span class="card color_form"><%= form.time_field :close_hour_friday%> </span>
+				<%= schedule.label :Viernes %> <span class="card color_form"><%= schedule.time_field :open_hour_friday %> </span>
+				<span class="card color_form"><%= schedule.time_field :close_hour_friday %> </span>
 
-				<%= form.label :Sabado %> <span class="card color_form"><%= form.time_field :open_hour_saturday%>
-				</span> <span class="card color_form"><%= form.time_field :close_hour_saturday%> </span> <br>
+				<%= schedule.label :Sabado %> <span class="card color_form"><%= schedule.time_field :open_hour_saturday %>
+				</span> <span class="card color_form"><%= schedule.time_field :close_hour_saturday %> </span> <br>
 
-				<%= form.label :Domingo %> <span class="card color_form"><%= form.time_field :open_hour_sunday%>
-				</span> <span class="card color_form"><%= form.time_field :close_hour_sunday%> </span> <br>
+				<%= schedule.label :Domingo %> <span class="card color_form"><%= schedule.time_field :open_hour_sunday %>
+				</span> <span class="card color_form"><%= schedule.time_field :close_hour_sunday %> </span> <br>
 				
 			</div>
+			<% end %>
 			<%= form.submit "Crear Nueva Sucursal", class:"btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"%></button>
 			<% end %>
 		</div>
+
+	
 </div>

@@ -1,0 +1,25 @@
+<div class="w-full card">
+  <div class="card-title">
+
+    <div class="flex justify-between items-center">
+      <h1 class=" font-bold text-4xl">Turnos</h1>
+    </div>
+      <%=link_to "Agregar Turnos", new_turn_path(), class: "btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"%>
+  </div>
+  <div class="card-body">
+    <div>
+      <% @turns.each do |turn| %>
+      <div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+        style="background-color:Lavender">
+        <p> <b>Fecha:</b> <%= turn.date%> <br> </p>
+        <p> <b>Hora: </b><%= turn.hour%><br> </p>
+        <p> <b>Estado: </b><%= turn.state%> <br> </p>
+        <% if can? :update, @turns %>
+        <%= link_to 'Editar Turno', edit_turn_path(turn), class: "btn btn-info rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+        <% end%>
+        <%= link_to "Eliminar Turno", destroy_turn_path(turn), class:"btn btn-danger rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
+      </div>
+      <%end%>
+    </div>
+  </div>
+</div>

@@ -1,26 +1,26 @@
 class Schedule < ApplicationRecord
 
-  has_one :branch_office, dependent: :destroy, foreign_key: true
+  has_one :branch_office, class_name: "BranchOffice", dependent: :destroy
   
-  validates :monday_open_hour, presence:true, if: -> {monday_close_hour.present?}
-  validates :monday_close_hour, presence:true, if: -> {monday_open_hour.present?}
+  validates :open_hour_monday, presence:true, if: -> {close_hour_monday.present?}
+  validates :close_hour_monday, presence:true, if: -> {open_hour_monday.present?}
 
-  validates :tuesday_open_hour, presence:true, if: -> {tuesday_close_hour.present?}
-  validates :tuesday_close_hour, presence:true, if: -> {tuesday_open_hour.present?}
+  validates :open_hour_tuesday, presence:true, if: -> {close_hour_tuesday.present?}
+  validates :close_hour_tuesday, presence:true, if: -> {open_hour_tuesday.present?}
 
-  validates :wednesday_open_hour, presence:true, if: -> {wednesday_close_hour.present?}
-  validates :wednesday_close_hour, presence:true, if: -> {wednesday_open_hour.present?}
+  validates :open_hour_wednesday, presence:true, if: -> {close_hour_wednesday.present?}
+  validates :close_hour_wednesday, presence:true, if: -> {open_hour_wednesday.present?}
 
-  validates :thursday_open_hour, presence:true, if: -> {thursday_close_hour.present?}
-  validates :thursday_close_hour, presence:true, if: -> {thursday_open_hour.present?}
+  validates :open_hour_thursday, presence:true, if: -> {close_hour_thursday.present?}
+  validates :close_hour_thursday, presence:true, if: -> {open_hour_thursday.present?}
 
-  validates :friday_open_hour, presence:true, if: -> {friday_close_hour.present?}
-  validates :friday_close_hour, presence:true, if: -> {friday_open_hour.present?}
+  validates :open_hour_friday, presence:true, if: -> {close_hour_friday.present?}
+  validates :close_hour_friday, presence:true, if: -> {open_hour_friday.present?}
 
-  validates :saturday_open_hour, presence:true, if: -> {saturday_close_hour.present?}
-  validates :saturday_close_hour, presence:true, if: -> {saturday_open_hour.present?}
+  validates :open_hour_saturday, presence:true, if: -> {close_hour_saturday.present?}
+  validates :close_hour_saturday, presence:true, if: -> {open_hour_saturday.present?}
 
-  validates :sunday_open_hour, presence:true, if: -> {sunday_close_hour.present?}
-  validates :sunday_close_hour, presence:true, if: -> {sunday_open_hour.present?}
+  validates :open_hour_sunday, presence:true, if: -> {close_hour_sunday.present?}
+  validates :close_hour_sunday, presence:true, if: -> {open_hour_sunday.present?}
 
 end

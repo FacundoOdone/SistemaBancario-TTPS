@@ -1,14 +1,14 @@
 class BranchOffice < ApplicationRecord
   belongs_to :location
   belongs_to :schedule
-  has_many :user, foreign_key: true
-  has_many :turn, foreign_key: true  
+  has_many :turns, :foreign_key => "branch_office_id",  dependent: :destroy
+  has_many :users, class_name: "User" , :foreign_key => "branch_office_id",  dependent: :destroy
   
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :direc, presence: true
   validates :tel, presence: true
-  validates :location_id, presence: true
-  validates :schedule_id, presence: true # noes necesario
-  #Si es has_one, al index pongo index: {unique: true}
+  validates :schedule, presence: true
+  validates :location, presence: true
+
 end

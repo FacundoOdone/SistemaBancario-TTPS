@@ -80,6 +80,4 @@ group :test do
   gem "webdrivers"
 end
 
-gem "cancan", "~> 1.6"
-
 gem "cancancan", "~> 3.4"

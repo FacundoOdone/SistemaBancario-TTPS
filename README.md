@@ -15,6 +15,8 @@ Al momento de realizar el trabajo, se tomaron algunas decisiones:
 
 - Las sucursales abren todos los dias
 
+- Cuando se cancela un turno, se borra de la base de datos
+
 Pasos para poder iniciar la aplicacion (Pasos secuenciales, realizar en el orden indicado)
 1- Tener el repositorio de manera local
 2- Configurar las credenciales de la BD en el archivo "databse.yml", el mismo se encuentra en la carpeta config

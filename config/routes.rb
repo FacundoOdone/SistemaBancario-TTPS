@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'turn/index',  as: :index_turn
+  get 'turn/new', to: "turn#new", as: :new_turn
+  post 'turn/new', to: "turn#create"
+  get 'turn/edit/:id', to: "turn#edit", as: :edit_turn
+  post 'turn/edit/:id', to: "turn#update"
+  get 'turn/destroy/:id', to: "turn#index", as: :destroy_turn
+
+  get 'turn/complete/:id', to: "turn#complete", as: :complete_turn
+  post 'turn/complete/:id', to: "turn#completed"
+
   get 'users/index', as: :index_user
   get 'users/edit/:id', to: "users#edit", as: :edit_user
   post 'users/edit/:id', to: "users#update"

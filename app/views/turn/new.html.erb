@@ -1,0 +1,19 @@
+<div>
+	<h1 class="font-bold text-4xl">Nuevo Turno</h1>
+	<div>
+		<%= form_with model: @turns do |form| %>
+			<div class="card">
+			  	<div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
+				  	<%= form.label :Dia %> <span class=" card color_form"><%= form.date_field :date, class: 'color_form'%></span><br>
+				  	<%= form.label :Hora %> <span class="card color_form"><%= form.time_field :hour, class: 'color_form'%></span><br>
+            <%= form.hidden_field :state, value: 0 %>
+            <%= form.label :Razon %> <span class="card color_form"><%= form.text_field :reason, class: 'color_form'%></span><br>
+            <%= form.label :Comentario %> <span class="card color_form"><%= form.text_field :comment, class: 'color_form'%></span><br>
+					<br>
+					<br> +
+          	<%= form.submit "Crear Turno", class:"btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"%></button>
+        	</div>
+			</div>
+      <%end%>
+  </div>
+</div>
