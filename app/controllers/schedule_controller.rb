@@ -1,5 +1,6 @@
 class ScheduleController < ApplicationController
-  before_action :authenticate_user!
+  
+  
   def edit
     @schedule = Schedule.find(params[:id])
   end

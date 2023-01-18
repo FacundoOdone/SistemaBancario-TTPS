@@ -1,6 +1,5 @@
 class BranchofficeController < ApplicationController
-  load_and_authorize_resource "BranchOffice"
-  before_action :authenticate_user!
+  
 
   
   def new

@@ -2,25 +2,25 @@ class Schedule < ApplicationRecord
 
   has_one :branch_office, dependent: :destroy, foreign_key: true
   
-  validates :open_hour_monday , presence: true
-  validates :close_hour_monday,presence: true
+  validates :monday_open_hour, presence:true, if: -> {monday_close_hour.present?}
+  validates :monday_close_hour, presence:true, if: -> {monday_open_hour.present?}
 
-  validates :open_hour_tuesday , presence: true
-  validates :close_hour_tuesday,presence: true
+  validates :tuesday_open_hour, presence:true, if: -> {tuesday_close_hour.present?}
+  validates :tuesday_close_hour, presence:true, if: -> {tuesday_open_hour.present?}
 
-  validates :open_hour_wednesday , presence: true
-  validates :close_hour_wednesday,presence: true
+  validates :wednesday_open_hour, presence:true, if: -> {wednesday_close_hour.present?}
+  validates :wednesday_close_hour, presence:true, if: -> {wednesday_open_hour.present?}
 
-  validates :open_hour_thursday , presence: true
-  validates :close_hour_thursday,presence: true
+  validates :thursday_open_hour, presence:true, if: -> {thursday_close_hour.present?}
+  validates :thursday_close_hour, presence:true, if: -> {thursday_open_hour.present?}
 
-  validates :open_hour_friday , presence: true
-  validates :close_hour_friday,presence: true
+  validates :friday_open_hour, presence:true, if: -> {friday_close_hour.present?}
+  validates :friday_close_hour, presence:true, if: -> {friday_open_hour.present?}
 
-  validates :open_hour_saturday , presence: true
-  validates :close_hour_saturday,presence: true
+  validates :saturday_open_hour, presence:true, if: -> {saturday_close_hour.present?}
+  validates :saturday_close_hour, presence:true, if: -> {saturday_open_hour.present?}
 
-  validates :open_hour_sunday , presence: true
-  validates :close_hour_sunday,presence: true
+  validates :sunday_open_hour, presence:true, if: -> {sunday_close_hour.present?}
+  validates :sunday_close_hour, presence:true, if: -> {sunday_open_hour.present?}
 
 end

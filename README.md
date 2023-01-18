@@ -10,8 +10,10 @@ El sistema esta realizado con:
 ° Base de datos PostgreSQL, Version: 15
 
 Al momento de realizar el trabajo, se tomaron algunas decisiones:
-° Para indicar que una sucursal se encuentra cerrada, al momento de crear o modificar el horario, debera indicarse el horario "00:00:00"
-° Las sucursales no abren los dias domingo, en caso de ser necesario, esto puede modificarse.
+
+- Para indicar que una sucursal se encuentra cerrada, al momento de crear o modificar el horario, debera dejarse el campo vacio, la app verificara que si existe horario de inicio y no de fin, notificar un error. Lo mismo ocurrira en el caso inverso
+
+- Las sucursales abren todos los dias
 
 Pasos para poder iniciar la aplicacion (Pasos secuenciales, realizar en el orden indicado)
 1- Tener el repositorio de manera local
