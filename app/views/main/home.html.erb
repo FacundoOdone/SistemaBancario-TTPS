@@ -1,4 +1,20 @@
-<div>
-  <h1 class="font-bold text-4xl">Main#home</h1>
-  <p>Find me in app/views/main/home.html.erb</p>
+<div class="row card">
+    <div class="my-5 mx-auto block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-5" style="background-color:Lavender">
+        <h1 class="mb-10 font-bold text-2xl text-gray-900 dark:text-white">Mis Datos</h1>
+        <div class="mb-2 tracking-tight text-gray-900 dark:text-white">
+            <b><span class="font-semibold text-xl text-gray-900 dark:text-white">Email </span></b>
+            <%= @userConected.email %>
+        </div>
+        <div class="mb-2 tracking-tight text-gray-900 dark:text-white">
+           <b> <span class="font-semibold text-xl text-gray-900 dark:text-white">Rol: </span></b>
+            <%= @userConected.rol %>
+        </div>
+        <% if current_user.operator? %>
+            <div class="mb-2 tracking-tight text-gray-900 dark:text-white">
+               <b> <span class="font-semibold text-xl text-gray-900 dark:text-white">Sucursal: </span></b>
+                <%= @userConected.branch_office.name %>
+            </div>
+        <% end %>
+        <%= link_to "Cambiar mi contraseña", change_user_pass_path(@userConected), class:"btn btn-primary rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
+    </div>
 </div>

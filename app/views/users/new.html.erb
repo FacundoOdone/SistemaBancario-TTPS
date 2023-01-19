@@ -2,37 +2,19 @@
 	<h1 class="font-bold text-4xl">Nuevo Usuario</h1>
 	<div>
 		<%= form_with model: @users , url: "/users/new" do |form| %>
-			<div class="card">
-			  	<div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
-				  	<%= form.label :Email %> <span class=" card color_form"><%= form.email_field :email, class: 'color_form'%></span><br>
-				  	<%= form.label :Password %> <span class="card color_form"><%= form.password_field :encrypted_password, class: 'color_form'%></span>
-					<br>
-				  	 Rol:<p class="card color_form"> <%= form.select :rol, ["ADMIN", "OPERATOR", "CLIENT"] , id:"user_type"%> </p> 
-					<br> 
-						<div id="location_select" style="display:none;">
-							<p class="card color_form"> <%= form.select :adad, ["a", "b", "c"] %> </p>
-						</div>
-			
+			<%= form.fields_for :user do |user|%>
+				<div class="card">
+			  		<div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
+				  		<%= user.label :Email %> <span class=" card color_form"><%= user.email_field :email, class: 'color_form'%></span><br>
+				  		<%= user.label :Password %> <span class="card color_form"><%= user.password_field :encrypted_password, class: 'color_form'%></span>
+						<br>
+				  	 	Rol:<p class="card color_form"> <%= form.select :rol, ["admin", "operator", "client"]%> </p> 
+						<br> 
+			<% end %>
+
           	<%= form.submit "Crear Nuevo Usuario", class:"btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"%></button>
         	</div>
 			</div>
       <%end%>
   </div>
 </div>
-
-<script>
-  // Agrega un evento de cambio al select
-  console.log("estoy haciendo cosas")
-  
-  $("#user_type").change(function() {
-		console.log($("#user_type"))
-    // Si el valor seleccionado es "OPERATOR", muestra el formulario
-	console.log("Hola que tal")
-    if(this.value === "OPERATOR") {
-      $("#location_select").show();
-    } else {
-      $("#location_select").hide();
-    }
-  });
-
-</script>

@@ -10,15 +10,15 @@
         style="background-color:Lavender"> 
           <p> <b>Lunes:</b><br> 
           <% if @schedule.open_hour_monday && @schedule.close_hour_monday%>
-            <b> Apertura:</b> <%= @schedule.open_hour_monday%> <br> 
-            <b> Cierre:</b> <%=  @schedule.close_hour_monday%> </p>
+            <b> Apertura:</b> <%= @schedule.open_hour_monday.strftime('%R')%> <br> 
+            <b> Cierre:</b> <%=  @schedule.close_hour_monday.strftime('%R')%> </p>
           <% else %>
             <b> Cerrado. </b> </p> <br>
           <% end %>
         <p> <b>Martes:</b><br>
         <% if @schedule.open_hour_tuesday && @schedule.close_hour_tuesday%> 
-          <b> Apertura:</b> <%= @schedule.open_hour_tuesday%> <br> 
-          <b> Cierre:</b> <%=  @schedule.close_hour_tuesday%> 
+          <b> Apertura:</b> <%= @schedule.open_hour_tuesday.strftime('%R')%> <br> 
+          <b> Cierre:</b> <%=  @schedule.close_hour_tuesday.strftime('%R')%> 
         <% else %>
           <b> Cerrado. </b> <br>
         <% end %>
@@ -26,40 +26,40 @@
         <br>
         <p> <b>Miercoles:</b><br> 
          <% if @schedule.open_hour_wednesday && @schedule.close_hour_wednesday%> 
-          <b> Apertura:</b> <%= @schedule.open_hour_wednesday%> <br> 
-          <b> Cierre:</b> <%=  @schedule.close_hour_wednesday%> </p>
+          <b> Apertura:</b> <%= @schedule.open_hour_wednesday.strftime('%R')%> <br> 
+          <b> Cierre:</b> <%=  @schedule.close_hour_wednesday.strftime('%R')%> </p>
         <% else %>
           <b> Cerrado. </b> <br>
         <% end %>
         <br>
         <p> <b>Jueves:</b><br> 
          <% if @schedule.open_hour_thursday && @schedule.close_hour_thursday%> 
-          <b> Apertura:</b> <%= @schedule.open_hour_thursday%> <br> 
-          <b> Cierre:</b> <%=  @schedule.close_hour_thursday%> </p>
+          <b> Apertura:</b> <%= @schedule.open_hour_thursday.strftime('%R')%> <br> 
+          <b> Cierre:</b> <%=  @schedule.close_hour_thursday.strftime('%R')%> </p>
         <% else %>
           <b> Cerrado. </b> <br>
         <% end %>
         <br>
         <p> <b>Viernes:</b><br> 
          <% if @schedule.open_hour_friday && @schedule.close_hour_friday%> 
-          <b> Apertura:</b> <%= @schedule.open_hour_friday%> <br> 
-          <b> Cierre:</b> <%=  @schedule.close_hour_friday%> </p>
+          <b> Apertura:</b> <%= @schedule.open_hour_friday.strftime('%R')%> <br> 
+          <b> Cierre:</b> <%=  @schedule.close_hour_friday.strftime('%R')%> </p>
         <% else %>
           <b> Cerrado. </b> <br>
         <% end %>
         <br>
         <p> <b>Sabado:</b><br> 
          <% if @schedule.open_hour_saturday  && @schedule.close_hour_saturday %> 
-          <b> Apertura:</b> <%= @schedule.open_hour_saturday%> <br> 
-          <b> Cierre:</b> <%=  @schedule.close_hour_saturday%> </p>
+          <b> Apertura:</b> <%= @schedule.open_hour_saturday.strftime('%R')%> <br> 
+          <b> Cierre:</b> <%=  @schedule.close_hour_saturday.strftime('%R')%> </p>
           <% else %>
           <b> Cerrado. </b> <br>
         <% end %>
         <br>
         <p> <b>Domingo:</b><br> 
          <% if @schedule.open_hour_sunday && @schedule.close_hour_sunday%> 
-          <b> Apertura:</b> <%= @schedule.open_hour_sunday%> <br> 
-          <b> Cierre:</b> <%=  @schedule.close_hour_sunday%> </p>
+          <b> Apertura:</b> <%= @schedule.open_hour_sunday.strftime('%R')%> <br> 
+          <b> Cierre:</b> <%=  @schedule.close_hour_sunday.strftime('%R')%> </p>
           <% else %>
           <b> Cerrado. </b> 
         <% end %>

@@ -40,18 +40,19 @@ BranchOffice.create!({
 
 User.create!({
   email: "admin@admin.com",
-  rol: "ADMIN",
+  rol: "admin",
   password: "adminadmin"
 })
 
 User.create!({
   email: "operador@operador.com",
-  rol: "OPERATOR",
-  password: "operadoroperador"
+  rol: "operator",
+  password: "operadoroperador",
+  branch_office: BranchOffice.find(1)
 })
 
 User.create!({
   email: "cliente@cliente.com",
-  rol: "CLIENT",
+  rol: "client",
   password: "clientecliente"
 })

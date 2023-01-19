@@ -42,29 +42,18 @@ class LocationsController < ApplicationController
 
   # PATCH/PUT /locations/1 or /locations/1.json
   def update
-    @locations=Location.all
-    @var = @locations.where(name: location_params["name"], province: location_params["province"])
-    if (@var.size == 0)
-      respond_to do |format|
-        if @location.update(location_params)
-          flash[:notice] = "Localidad actualizada con exito"
-          redirect_to "/locations/index" and return
-        else
-          flash[:alert] = "Ocurrio un error al actualizar la localidad"
-          redirect_to "/locations/index" and return
-        end
-      end
+    @locations = Location.find(params[:id])
+    if @location.update(location_params)
+      flash[:notice] = "Localidad actualizada con exito"
     else
-      flash[:alert] = "Esa localidad ya existe en la provincia"
-      redirect_to "/locations/index" and return
+      flash[:alert] = "Ocurrio un error al actualizar la localidad"
     end
-    
+    redirect_to index_location_path
   end
 
   # DELETE /locations/1 or /locations/1.json
   def destroy
     @location.destroy
-
     respond_to do |format|
       format.html { redirect_to locations_url, notice: "Se borro la localidad." }
       format.json { head :no_content }

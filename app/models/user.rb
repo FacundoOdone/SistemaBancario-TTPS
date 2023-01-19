@@ -4,12 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
+  enum rol: {
+    admin: "admin",
+    operator: "operator",
+    client: "client"
+  }
 
-  belongs_to :branch_office,optional: true
-  has_many :turn, foreign_key: true
+  belongs_to :branch_office,optional: true, dependent: :destroy
+  has_many :turn, foreign_key: true, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
-  validates :branch_office, presence: true, if: :OPERATOR?
-  validates :role, presence: true, inclusion: ["ADMIN","OPERATOR","CLIENT"]
+  validates :rol, presence: true, inclusion: ["admin","operator","client"]
+  validates :branch_office, presence: true, if: :operator?
+
 end

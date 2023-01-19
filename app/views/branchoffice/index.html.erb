@@ -1,7 +1,9 @@
 <div class="w-full card">
   <div>
     <h1 class="font-bold text-4xl">Indice de sucursales</h1> 
+    <% if current_user.admin?%>
     <%= link_to "Crear Sucursal", new_branchoffice_path(), class:"btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"%>
+    <% end%>
     <br> <br>
     <% @branch_offices.each do |sucursal| %>
     <div class="row">
@@ -18,10 +20,10 @@
             <p> <b> Provincia: </b><%= sucursal.location.province %> </p>
             <% if can? :manage, @branch_offices %> 
               <%= link_to "Editar", edit_branchoffice_path(sucursal), class:"btn btn-info rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
-              <%= link_to "Editar Horario", edit_schedule_path(sucursal), class:"btn btn-warning rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
-              <%= link_to "Ver Horario", show_schedule_path(sucursal), class:"btn btn-secondary rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
+              <%= link_to "Editar Horario", edit_schedule_path(sucursal.schedule), class:"btn btn-warning rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
               <%= link_to "Eliminar Sucursal", destroy_branchoffice_path(sucursal), class:"btn btn-danger rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
             <% end %>
+              <%= link_to "Ver Horario", show_schedule_path(sucursal.schedule), class:"btn btn-secondary rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
           </div>
         </div>
       </div>

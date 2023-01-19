@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post 'turn/new', to: "turn#create"
   get 'turn/edit/:id', to: "turn#edit", as: :edit_turn
   post 'turn/edit/:id', to: "turn#update"
-  get 'turn/destroy/:id', to: "turn#index", as: :destroy_turn
+  delete 'turn/destroy/:id', to: "turn#destroy", as: :destroy_turn
 
   get 'turn/complete/:id', to: "turn#complete", as: :complete_turn
   post 'turn/complete/:id', to: "turn#completed"
@@ -14,10 +14,13 @@ Rails.application.routes.draw do
   post 'users/edit/:id', to: "users#update"
   get 'users/new',                        as: :new_user
   post 'users/new' , to: "users#create"
+  get 'users/new/sucursal', to: "users#sucursal", as: :sucursal_user
   get 'users/destroy/:id', to: "users#destroy", as: :destroy_user
+  get 'users/new_pass/:id', to: "users#change_password", as: :change_user_pass
+  post 'users/new_pass/:id', to: "users#changed_password"
 
   get 'schedule/edit/:id', to: "schedule#edit", as: :edit_schedule
-  post 'schedule/edit/:id', to:"schedule#update"
+  patch 'schedule/edit/:id', to:"schedule#update"
   get 'schedule/show/:id', to: "schedule#show", as: :show_schedule
 
   get 'branchoffice/new', to: "branchoffice#new", as: :new_branchoffice

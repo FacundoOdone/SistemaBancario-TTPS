@@ -4,7 +4,9 @@
     <div class="flex justify-between items-center">
       <h1 class=" font-bold text-4xl">Usuarios</h1>
     </div>
+    <% if current_user.admin? %>
       <%=link_to "Agregar Usuarios", new_user_path(), class: "btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"%>
+    <% end%>
   </div>
   <div class="card-body">
     <div>
@@ -14,10 +16,10 @@
         <p> <b>Usuario n°:</b> <%= user.id%> <br> </p>
         <p> <b> Email: </b><%= user.email%><br> </p>
         <p> <b> Rol: </b><%= user.rol%> <br> </p>
-        <% if can? :update, @users %>
+        <% if current_user.admin? %>
         <%= link_to 'Editar Usuario', edit_user_path(user), class: "btn btn-info rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-        <% end%>
         <%= link_to "Eliminar Usuario", destroy_user_path(user), class:"btn btn-danger rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
+        <% end%>
       </div>
       <%end%>
     </div>

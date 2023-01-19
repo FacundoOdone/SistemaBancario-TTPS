@@ -2,18 +2,20 @@
 	<h1 class="font-bold text-4xl">Editar Turno</h1>
 	<div>
 		<%= form_with model: @turns do |form| %>
-			<div class="card">
+			<%= form.fields_for :turn do |turn| %>
+				<div class="card">
 			  	<div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
-				  	<%= form.label :Dia %> <%= form.date_field :date, placeholder: @turns.date, value: @turns.date ,class: 'card color_form'%><br>
-				  	<%= form.label :Hora %> <%= form.time_field :hour, placeholder: @turns.hour, value: @turns.hour ,class: 'card color_form'%><br>
-            <%= form.hidden_field :state, value: 0 %>
-            <%= form.label :Razon %> <%= form.text_field :reason, placeholder: @turns.reason, value: @turns.reason , class: 'card color_form'%><br>
-            <%= form.label :Comentario %> <%= form.text_field :comment, placeholder: @turns.comment, value: @turns.comment ,class: 'card color_form'%><br>
+				  	<%= turn.label :Dia %> <span class=" card color_form"><%= turn.date_field :date,placeholder: @old_turn.date, value: @old_turn.date ,class: 'color_form'%></span><br>
+				  	<%= turn.label :Hora %> <span class="card color_form"><%= turn.time_field :hour, placeholder: @old_turn.hour.strftime('%R'), value: @old_turn.hour.strftime('%R'),class: 'color_form'%></span><br>
+            <%= turn.hidden_field :state, value: @old_turn.state %>
+			<%= turn.hidden_field :branch_office, value: @old_turn.branch_office.id %>
+            <%= turn.label :Razon %> <span class="card color_form"><%= turn.text_field :reason, placeholder: @old_turn.reason, value: @old_turn.reason ,class: 'color_form'%></span><br>
 					<br>
-					<br> +
+					<br> 
+			<% end %>
           	<%= form.submit "Editar Turno", class:"btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"%></button>
         	</div>
 			</div>
-      <%end%>
+    <% end %>
   </div>
 </div>

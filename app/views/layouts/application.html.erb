@@ -19,25 +19,35 @@
 
 <body class="bg-gray-500 font-sans leading-normal tracking-normal mt-12">
 <% if signed_in? %>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light " style="background-color: #e3f2fd;">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        <li class="nav-item pr-3">
+          <%= button_to "Cerrar Sesion", destroy_user_session_path(@user),method: :delete, class: "nav-link"%>
         </li>
+        <li class="nav-item">
+          <%= link_to 'Mis Datos', root_path(), class: "nav-link" %>
+        </li>
+        <% if current_user.admin?%>
         <li class="nav-item">
           <%= link_to 'Localidades', index_location_path(), class: "nav-link" %>
         </li>
+        <% end %>
+        <% if !current_user.client?%>
         <li class="nav-item">
           <%= link_to 'Usuarios', index_user_path(), class: "nav-link" %>
         </li>
+        <% end %>
+        <% if current_user.client? || current_user.operator? %>
         <li class="nav-item">
-          <a class="nav-link" href="/turn/index">Turnos</a>
+          <%= link_to 'Turnos', index_turn_path(), class: "nav-link" %>
         </li>
+        <% end %>
         <li class="nav-item">
           <%= link_to 'Sucursales', index_branchoffice_path(), class: "nav-link" %>
         </li>
+        
       </ul>
     </div>
   </div>

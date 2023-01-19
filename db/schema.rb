@@ -60,10 +60,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_215228) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "branch_offices_id"
-    t.bigint "users_id"
-    t.index ["branch_offices_id"], name: "index_turns_on_branch_offices_id"
-    t.index ["users_id"], name: "index_turns_on_users_id", unique: true
+    t.bigint "branch_office_id", null: false
+    t.bigint "client_id", null: false
+    t.bigint "staff_attended_id"
+    t.index ["branch_office_id"], name: "index_turns_on_branch_office_id"
+    t.index ["client_id"], name: "index_turns_on_client_id"
+    t.index ["staff_attended_id"], name: "index_turns_on_staff_attended_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,15 +77,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_215228) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.bigint "branch_offices_id"
-    t.index ["branch_offices_id"], name: "index_users_on_branch_offices_id"
+    t.bigint "branch_office_id"
+    t.index ["branch_office_id"], name: "index_users_on_branch_office_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "branch_offices", "locations"
   add_foreign_key "branch_offices", "schedules"
-  add_foreign_key "turns", "branch_offices", column: "branch_offices_id"
-  add_foreign_key "turns", "users", column: "users_id"
-  add_foreign_key "users", "branch_offices", column: "branch_offices_id"
+  add_foreign_key "turns", "branch_offices"
+  add_foreign_key "turns", "users", column: "client_id"
+  add_foreign_key "turns", "users", column: "staff_attended_id"
+  add_foreign_key "users", "branch_offices"
 end

@@ -56,11 +56,16 @@ class BranchofficeController < ApplicationController
   def destroy
     @branch_office = BranchOffice.find(params[:id])
     @schedule = @branch_office.schedule
-      if (@branch_office.destroy)
+    @turns = Turn.where(state: 0 , branch_office_id: params[:id])
+    if @turns.size == 0
+      if (@schedule.destroy)
         flash[:notice] = "Se elimino la sucursal Correctamente"
       else
         flash[:alert] = "Ocurrio un error al intentar destruir la sucursal"
       end
+    else
+      flash[:alert] = "No puede borrar sucursales con turnos pendientes"
+    end
     redirect_to index_branchoffice_path and return
   end
 
@@ -81,8 +86,6 @@ class BranchofficeController < ApplicationController
     )
 
   end
-
-
 
 end
 
