@@ -8,7 +8,7 @@ class User < ApplicationRecord
     client: "client"
   }
 
-  belongs_to :branch_office,optional: true, dependent: :destroy
+  belongs_to :branch_office,optional: true
   has_many :turns, :foreign_key => "client_id"
   has_many :turns, :foreign_key => "staff_attended_id"
 

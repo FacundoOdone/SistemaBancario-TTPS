@@ -2,15 +2,15 @@
 	<h1 class="font-bold text-4xl">Editar Usuario</h1>
 	<div>
 		<%= form_with model: @users do |form| %>
+		<%= form.fields_for :user do |user| %>
 		<div class="card">
 			<div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
 				style="background-color:Lavender">
-				<%= form.label :Email %> <span
-					class="card color_form"><%= form.email_field :email, class: "color_form", placeholder: @user.email, value: @user.email%></span><br>
-				<%= form.label :Password %> <span
-					class="card color_form"><%= form.password_field :encrypted_password, class: "color_form"%></span><br>
-				Rol:<p class="card color_form"> <%= form.select :rol, ["admin", "operator", "client"], {:prompt => @user.rol, selected: @user.rol} %>
+				<%= user.label :Email %> <span
+					class="card color_form"><%= user.email_field :email, class: "color_form", placeholder: @user.email, value: @user.email%></span><br>
+				Rol:<p class="card color_form"> <%= user.select :rol, ["admin", "operator", "client"], {:prompt => @user.rol, selected: @user.rol} %>
 				</p> <br>
+				<% end %>
 				<%= form.submit "Editar Usuario", class: "btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"%></button>
 			</div>
 		</div>

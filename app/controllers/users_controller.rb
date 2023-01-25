@@ -39,20 +39,18 @@ class UsersController < ApplicationController
 
   def update
     @users= User.find(params[:id])
-    if (params[:encrypted_password] != "" && params[:rol] != "")
-      if (@users.update(email: params[:email], password: params[:encrypted_password], rol: params[:rol]))
-        redirect_to index_user_path, notice: "Usuario actualizado Correctamente"
+    if (@users.update_attribute(:email,params[:user][:email]) && (@users.update_attribute(:rol,params[:user][:rol]))) 
+      if(@users.operator?)
+        redirect_to sucursal_user_url(id: @users.id)
       else
-        redirect_to index_user_path, alert: "Ocurrio un error al actualizar al usuario"
+        flash[:notice]="Usuario actualizado Correctamente"
       end
     else
-      if (@users.update(email: params[:email], rol: params[:rol]))
-        redirect_to index_user_path, notice: "Usuario actualizado Correctamente"
-      else
-        redirect_to index_user_path, alert: "Ocurrio un error al actualizar al usuario"
+        @users.errors.full_messages.each do |msg|
+          flash[:alert] = msg.split(" ",2)[1]
       end
+        redirect_to index_user_path and return
     end
-    
   end
 
   def new
@@ -69,7 +67,10 @@ class UsersController < ApplicationController
       redirect_to index_user_path, notice: "Usuario Creado Correctamente"
       end
     else
-      redirect_to new_user_path, alert: "Ocurrio un error al crear al usuario"
+      @users.errors.full_messages.each do |msg|
+                    flash[:alert] = msg.split(" ",2)[1]
+                  end
+      redirect_to new_user_path and return
     end
   end
 
@@ -84,7 +85,10 @@ class UsersController < ApplicationController
     if  @user.update_attribute(:branch_office, @branch_office)
       redirect_to index_user_path, notice: "Usuario Creado Correctamente"
     else
-      redirect_to sucursal_user_url, alert: "Ocurrio un error al crear al usuario"
+      @user.errors.full_messages.each do |msg|
+                    flash[:alert] = msg.split(" ",2)[1]
+                  end
+      redirect_to sucursal_user_url and return
     end
   end
 
@@ -96,7 +100,9 @@ class UsersController < ApplicationController
       if @users.destroy
         flash[:notice] = "Se elimino al usuario Correctamente"
       else
-        flash[:alert] = "Ocurrio un error al intentar destruir al usuario"
+        @users.errors.full_messages.each do |msg|
+                    flash[:alert] = msg.split(" ",2)[1]
+                  end
       end
     else
       flash[:alert] = "No puede eliminar un usuario con turnos pendientes"
@@ -105,7 +111,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.fetch(:user ,  {}).permit(:email, :password, :rol,:branch_office)
+    params.fetch(:user, {}).permit(:email, :password, :rol,:branch_office)
   end
  
 end

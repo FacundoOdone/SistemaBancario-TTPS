@@ -25,7 +25,6 @@ class LocationsController < ApplicationController
   def create
     @location=Location.all
     @var = Location.where(name: params[:location][:name], province: params[:location][:province])
-    p (@var.size)
     if (@var.size > 0)
       flash[:alert] = "La localidad ya existe dentro de la provincia"
       redirect_to new_location_path
@@ -46,7 +45,7 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1 or /locations/1.json
   def update
     @locations = Location.find(params[:id])
-    @var = Location.where(name: params[:name], province: params[:province])
+    @var = Location.where(name: params[:location][:name], province: params[:location][:province])
     if (@var.size > 0)
       flash[:alert] = "La localidad ya existe dentro de la provincia"
       redirect_to edit_location_path(@locations)
@@ -62,7 +61,7 @@ class LocationsController < ApplicationController
 
   # DELETE /locations/1 or /locations/1.json
   def destroy
-    @location = Location.find(params[:id])
+    @location = set_location()
     @branch_offices = BranchOffice.where(location_id: params[:id])
     @cant = 0
     @branch_offices.each do |branch_office|

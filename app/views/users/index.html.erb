@@ -16,6 +16,9 @@
         <p> <b>Usuario n°:</b> <%= user.id%> <br> </p>
         <p> <b> Email: </b><%= user.email%><br> </p>
         <p> <b> Rol: </b><%= user.rol%> <br> </p>
+        <% if user.rol == "operator" %>
+          <p> <b> Sucursal donde opera: </b><%= BranchOffice.find(user.branch_office_id).name%> <br> </p>
+        <% end %>
         <% if current_user.admin? %>
         <%= link_to 'Editar Usuario', edit_user_path(user), class: "btn btn-info rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
         <%= link_to "Eliminar Usuario", destroy_user_path(user), class:"btn btn-danger rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
