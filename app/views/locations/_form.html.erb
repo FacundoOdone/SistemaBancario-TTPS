@@ -11,17 +11,18 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
+  <div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
+    <p><%= form.label :name %>
+    <%= form.text_field :name, class: "color_form rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %></p>
     <%= form.label :province %>
-    <%= form.text_field :province, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="inline">
-    <button class="btn btn-success"><%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %></button>
+    <%= form.text_field :province, class: "color_form rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %> <br>
+     <div class="inline">
+     <br>
+    <%= form.submit class: " btn btn-success rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
+</div>
+
+
+
+ 

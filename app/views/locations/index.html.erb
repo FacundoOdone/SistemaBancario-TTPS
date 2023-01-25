@@ -12,11 +12,9 @@
 			  <div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
 				 <p> <b>Nombre:</b> <%= location.name%> <br> </p>
          <p> <b> Provincia: </b><%= location.province%><br> </p>
-         <p>
          <%= link_to 'Edit this location', edit_location_path(location), class: "btn btn-info mt-2 rounded-lg py-3 px-3 bg-gray-100 font-medium" %>
-         <%= link_to 'Destroy this location', location_path(location), method: :delete, class: "btn btn-danger mt-2 rounded-lg py-3 px-3 bg-gray-100 font-medium" %>
-          </p>
+         <%= button_to 'Destroy this location', destroy_location_path(location), method: :delete, class: "btn btn-danger mt-2 rounded-lg py-3 px-3 bg-gray-100 font-medium" %>
         </div> 
       <%end%>
   </div>
-</div></div> </div></div>
+</div>

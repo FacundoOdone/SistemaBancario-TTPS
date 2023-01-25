@@ -6,9 +6,9 @@
 				<div class="card">
 			  		<div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
 				  		<%= user.label :Email %> <span class=" card color_form"><%= user.email_field :email, class: 'color_form'%></span><br>
-				  		<%= user.label :Password %> <span class="card color_form"><%= user.password_field :encrypted_password, class: 'color_form'%></span>
+				  		<%= user.label :Password %> <span class="card color_form"><%= user.password_field :password, class: 'color_form'%></span>
 						<br>
-				  	 	Rol:<p class="card color_form"> <%= form.select :rol, ["admin", "operator", "client"]%> </p> 
+				  	 	Rol:<p class="card color_form"> <%= user.select :rol, ["admin", "operator", "client"]%> </p> 
 						<br> 
 			<% end %>
 

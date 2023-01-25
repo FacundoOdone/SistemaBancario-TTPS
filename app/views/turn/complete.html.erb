@@ -3,10 +3,10 @@
 	<div>
 		<%= form_with model: @turns do |form| %>
 		<%= form.fields_for :turn do |turn| %>
-			<div class="card">
+			<div>
 			  	<div class="my-5 block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" style="background-color:Lavender">
             <%= turn.hidden_field :state, value: 1 %>
-            <%= turn.label :Comentario %> <%= turn.text_field :comment ,class: 'card color_form'%><br>
+            <%= turn.label :Comentario %> <span class="card color_form"><%= turn.text_area :comment ,class: 'card color_form'%> </span><br>
 					<br>
 					<br> 
 			<% end %>

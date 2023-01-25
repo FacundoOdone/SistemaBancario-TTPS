@@ -14,10 +14,12 @@ Rails.application.routes.draw do
   post 'users/edit/:id', to: "users#update"
   get 'users/new',                        as: :new_user
   post 'users/new' , to: "users#create"
-  get 'users/new/sucursal', to: "users#sucursal", as: :sucursal_user
+  get 'users/new/sucursal/:id', to: "users#sucursal", as: :sucursal_user
+  post "users/new/sucursal_update/:id", to: "users#sucursal_update", as: :sucursal_update_user
   get 'users/destroy/:id', to: "users#destroy", as: :destroy_user
   get 'users/new_pass/:id', to: "users#change_password", as: :change_user_pass
   post 'users/new_pass/:id', to: "users#changed_password"
+  post 'users/registration', to: "registration#register", as: :user_registrer
 
   get 'schedule/edit/:id', to: "schedule#edit", as: :edit_schedule
   patch 'schedule/edit/:id', to:"schedule#update"
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
   get 'branchoffice/destroy/:id', to: "branchoffice#destroy", as: :destroy_branchoffice
 
   get 'locations/new',   as: :new_location
+  delete 'locations/destroy/:id', to: "locations#destroy", as: :destroy_location
   get 'locations/', to: "locations#index", as: :index_location
 
   resources :locations

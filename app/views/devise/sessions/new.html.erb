@@ -38,7 +38,8 @@
           </div>
           <div class="form-group">
             <div class="actions">
-              <%= f.submit "Log in" %>
+              <%= f.submit "Ingresar", class:"btn btn-success rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+              <%= link_to "Registrarse" ,new_user_registration_path(), class:"btn btn-warning rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
             </div>
           </div>
           <% end %>

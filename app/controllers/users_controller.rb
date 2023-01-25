@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
+  before_action :authenticate_user!
 
   
   def index
@@ -17,23 +18,11 @@ class UsersController < ApplicationController
   def changed_password
     @user = User.find(params[:id])
     @userAux = User.find(params[:id])
-
-    @userAux.password = params[:user][:old_encrypted_password]
-    p "----------------------------"
-    p (@user.encrypted_password == @userAux.encrypted_password)
-    p "----------------------------"
-    p @user.encrypted_password
-    p @userAux.encrypted_password
-
-    if (@user.encrypted_password == @userAux.encrypted_password)
-      @user.password = params[:user][:new_encrypted_password]
-      @userAux.password=params[:user][:repeated_encrypted_password]
-
-      if (@user.encrypted_password == @userAux.encrypted_password)
+    if (@user.valid_password?(params[:user][:old_encrypted_password]))
+      if (params[:user][:new_encrypted_password] == params[:user][:repeated_encrypted_password])
         if(@user.update(password: params[:user][:new_encrypted_password]))
-
          flash[:notice]= "Contraseña actualizada con exito"
-         redirect_to root_path
+         redirect_to root_path and return
         end
       else
         flash[:alert] = "Las contraseñas no son iguales"
@@ -73,28 +62,38 @@ class UsersController < ApplicationController
 
   def create
     @users = User.new(user_params)
-    if(params[:user][:rol] == "operator")
-      redirect_to sucursal_user_path
-    end
-      if (BranchOffice.find(params[:branch_office]))
-          @branch_office = BranchOffice.find(params[:branch_office])
-          @user.branch_office = @branch_office
-      else
-          flash[:alert] =  "No existe la Sucursal Seleccionada"
-          redirect_to new_user_path and return
-      end
     if(@users.save)
+      if(@users.operator?)
+        redirect_to sucursal_user_url(id: @users.id)
+      else
       redirect_to index_user_path, notice: "Usuario Creado Correctamente"
+      end
     else
       redirect_to new_user_path, alert: "Ocurrio un error al crear al usuario"
     end
   end
 
+  def sucursal
+    @user_id = params[:id]
+    @branch_office = BranchOffice.all
+  end
+
+  def sucursal_update
+    @user = User.find(params[:id])
+    @branch_office = BranchOffice.find(params[:branchoffice])
+    if  @user.update_attribute(:branch_office, @branch_office)
+      redirect_to index_user_path, notice: "Usuario Creado Correctamente"
+    else
+      redirect_to sucursal_user_url, alert: "Ocurrio un error al crear al usuario"
+    end
+  end
+
+
   def destroy
     @users = User.find(params[:id])
     @turns = Turn.where(state: 0, client_id: params[:id])
     if @turns.size == 0
-      if (@users.destroy)
+      if @users.destroy
         flash[:notice] = "Se elimino al usuario Correctamente"
       else
         flash[:alert] = "Ocurrio un error al intentar destruir al usuario"
@@ -106,7 +105,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.fetch(:user ,  {}).permit(:username, :password, :rol)
+    params.fetch(:user ,  {}).permit(:email, :password, :rol,:branch_office)
   end
  
 end

@@ -16,6 +16,12 @@
         <p> <b>Fecha:</b> <%= turn.date%> <br> </p>
         <p> <b>Hora: </b><%= turn.hour.strftime('%R')%><br> </p>
         <p> <b>Estado: </b><% if turn.state == 0 %> Pendiente  <% else %> Completado <% end %><br> </p>
+        <p> <b> Sucursal: </b> <%= BranchOffice.find(turn.branch_office_id).name%> <br> </p>
+        <p> <b>Razon del turno: </b><%= turn.reason %><br> </p>
+        <% if turn.comment %>
+          <p> <b>Comentario del Operador: </b><%= turn.comment%><br> </p>
+          <p> <b>Email del Operador: </b><%= User.find(turn.staff_attended_id).email%><br> </p>
+        <% end %>
         <% if current_user.client? && turn.state == 0 %>
         <div class="d-flex">
           <%= link_to 'Editar Turno', edit_turn_path(turn), class: "btn btn-info rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium inline" %>

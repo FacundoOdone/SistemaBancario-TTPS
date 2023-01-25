@@ -1,5 +1,6 @@
 class TurnController < ApplicationController
   load_and_authorize_resource
+  before_action :authenticate_user!
 
   def index
     if (current_user.client?)
@@ -30,11 +31,6 @@ def create
   @turn = Turn.new(turn_params)
   if BranchOffice.find(params[:branch_office])
       @branch_office = BranchOffice.find(params[:branch_office])
-      puts "-------------------------------------------------"
-      puts params[:branch_office]
-      puts "-------------------------------------------------"
-      puts @branch_office.schedule.as_json
-      puts "-------------------------------------------------"
       if validateHour(@branch_office.schedule)
           @turn.branch_office = @branch_office
           @turn.client = helpers.current_user
@@ -134,17 +130,18 @@ private
   end
 
   def validateHour(schedule)
-    puts "------------------------------"
-    puts schedule.as_json
-    puts "------------------------------"
     @hour = Time.parse(params[:turn][:hour]).hour
     @dayName = Date.parse(params[:turn][:date]).strftime("%A").downcase
-    @initHour = schedule["open_hour_#{@dayName}"].hour
-    @finishHour = schedule["close_hour_#{@dayName}"].hour
-    if !@initHour && !@finishHour 
-        return false
-    else
+    if schedule["open_hour_#{@dayName}"] && schedule["close_hour_#{@dayName}"]
+      @initHour = schedule["open_hour_#{@dayName}"].hour
+      @finishHour = schedule["close_hour_#{@dayName}"].hour
+      if @initHour == 00 && @finishHour == 00
+          return false
+      else
         return  @hour.between?(@initHour,@finishHour)
+      end
+    else
+      return false
     end
-end
+  end
 end

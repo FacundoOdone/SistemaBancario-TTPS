@@ -17,14 +17,17 @@ Al momento de realizar el trabajo, se tomaron algunas decisiones:
 
 - Cuando se cancela un turno, se borra de la base de datos
 
+- Cuando se borra una branch office, se borran todos los operadores que antiendan en ella
+
 Pasos para poder iniciar la aplicacion (Pasos secuenciales, realizar en el orden indicado)
-1- Tener el repositorio de manera local
-2- Configurar las credenciales de la BD en el archivo "databse.yml", el mismo se encuentra en la carpeta config
-3- Abrir una terminal y movernos hasta el proyecto para poder ingresar los siguientes comandos para iniciar la BD(En orden)
-a- rails db:create
-b- rails db:migrate
-c- rails db:seed
-4- Una vez creada la BD, utilizamos el comando "rails s" para iniciar la app, la misma se inicia en la direccion "localhost:3000"
+
+- 1 Tener el repositorio de manera local
+- 2 Configurar las credenciales de la BD en el archivo "databse.yml", el mismo se encuentra en la carpeta config
+- 3 Abrir una terminal y movernos hasta el proyecto para poder ingresar los siguientes comandos para iniciar la BD(En orden)
+- a rails db:create
+- b rails db:migrate
+- c rails db:seed
+- 4 Una vez creada la BD, utilizamos el comando "rails s" para iniciar la app, la misma se inicia en la direccion "localhost:3000"
 
 El comando db:seed iniciara La sucursal de prueba, su horario de prueba y 3 usuarios, los cuales son:
 °Admin- email:"admin@admin.com" contraseña: "adminadmin"

@@ -23,4 +23,7 @@ class Schedule < ApplicationRecord
   validates :open_hour_sunday, presence:true, if: -> {close_hour_sunday.present?}
   validates :close_hour_sunday, presence:true, if: -> {open_hour_sunday.present?}
 
+
+  
+
 end

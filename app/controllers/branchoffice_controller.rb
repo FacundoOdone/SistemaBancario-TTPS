@@ -1,5 +1,6 @@
 class BranchofficeController < ApplicationController
   load_and_authorize_resource "BranchOffice"
+  before_action :authenticate_user!
 
   def new
     @locations = Location.all
@@ -32,8 +33,12 @@ class BranchofficeController < ApplicationController
   def create
     @location = Location.find (params[:location])
     @branch_offices = BranchOffice.all
-    @var=@branch_offices.where(name: params[:name] ,location: @location.id)
-    if (@var.size == 0)
+    @var=@branch_offices.where(name: params[:branch_office][:name] ,location: @location.id)
+    p @var.size
+    if (@var.size > 0)
+      flash[:alert]="La sucursal ya existe en esa localidad"
+      redirect_to new_branchoffice_path
+    else
       @schedule = Schedule.new(schedule_params)
       @schedule.save
       @branch_offices = BranchOffice.new(branchoffice_params)
@@ -44,12 +49,10 @@ class BranchofficeController < ApplicationController
       else
         flash[:alert]= "Ocurrio un error al crear la sucursal"
       end
-      
-    else
-      flash[:alert]="La sucursal ya existe en esa localidad"
+      redirect_to index_branchoffice_path and return
     end
 
-    redirect_to index_branchoffice_path and return
+    
     
   end
 
@@ -58,7 +61,7 @@ class BranchofficeController < ApplicationController
     @schedule = @branch_office.schedule
     @turns = Turn.where(state: 0 , branch_office_id: params[:id])
     if @turns.size == 0
-      if (@schedule.destroy)
+      if (@branch_office.destroy)
         flash[:notice] = "Se elimino la sucursal Correctamente"
       else
         flash[:alert] = "Ocurrio un error al intentar destruir la sucursal"
