@@ -63,19 +63,14 @@ class LocationsController < ApplicationController
   def destroy
     @location = set_location()
     @branch_offices = BranchOffice.where(location_id: params[:id])
-    @cant = 0
-    @branch_offices.each do |branch_office|
-      @turns = Turn.where(state: 0 , branch_office_id: branch_office.id)
-      @cant = @cant + @turns.size
-    end
-    if @cant == 0
-    @location.destroy
-    respond_to do |format|
-      format.html { redirect_to locations_url, notice: "Se borro la localidad." }
-      format.json { head :no_content }
-    end
+    if @branch_offices.size == 0
+      @location.destroy
+      respond_to do |format|
+        format.html { redirect_to locations_url, notice: "Se borro la localidad." }
+        format.json { head :no_content }
+      end
     else
-      flash[:alert] = "Alguna sucursal de la localidad contiene turnos pendientes"
+      flash[:alert] = "La localidad tiene sucursales asociadas"
       redirect_to locations_url and return
     end
   end

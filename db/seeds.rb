@@ -56,3 +56,25 @@ User.create!({
   rol: "client",
   password: "clientecliente"
 })
+
+Turn.create!({
+  date: "2023-05-14",
+  hour: "15:00:00",
+  state: 0,
+  reason: "Compra de dolares",
+  comment: nil,
+  branch_office_id: 1,
+  client_id: 3,
+  staff_attended_id: nil
+})
+
+Turn.create!({
+  date: "2023-05-12",
+  hour: "15:00:00",
+  state: 1,
+  reason: "Retirar dinero",
+  comment: "Transaccion Exitosa !",
+  branch_office_id: 1,
+  client_id: 3,
+  staff_attended_id: 2
+})

@@ -23,14 +23,14 @@ class Ability
       cannot :attend, Turn
       cannot :attended, Turn
       cannot :manage, User
-      can :updatePassword, User
-      can :changePasword, User
+      can :change_password, User
+      can :changed_password, User
       can :home, BranchOffice
       can :read, BranchOffice
       can :read, Schedule 
     elsif (user.operator?)
-      can :updatePassword, User
-      can :changePasword, User
+      can :change_password, User
+      can :changed_password, User
       can :home, BranchOffice
       can :read, BranchOffice
       can :read, Schedule
