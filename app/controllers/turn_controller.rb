@@ -27,7 +27,6 @@ def new
 end
 
 def create
-  p params
   @turn = Turn.new(turn_params)
   if BranchOffice.find(params[:branch_office])
       @branch_office = BranchOffice.find(params[:branch_office])
@@ -120,21 +119,5 @@ private
     params.fetch(:turn, {}).permit(:date, :hour,:state, :reason, :comment)
   end
   
-  
-  #def validateHour(schedule)
-    #@hour = Time.parse(params[:turn][:hour]).hour
-    #@dayName = Date.parse(params[:turn][:date]).strftime("%A").downcase
-    #if schedule["open_hour_#{@dayName}"] && schedule["close_hour_#{@dayName}"]
-      #@initHour = schedule["open_hour_#{@dayName}"].hour
-      #@finishHour = schedule["close_hour_#{@dayName}"].hour
-      #if @initHour == 00 && @finishHour == 00
-          #return false
-      #else
-        #return  @hour.between?(@initHour,@finishHour)
-      #end
-    #else
-      #return false
-    #end
-  #end
   
 end
